@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="light-style layout-wide customizer-hide" data-theme="theme-default" data-assets-path="/admin/assets/" data-template="vertical-menu-template" data-style="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Email | <%= appName %></title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/admin/assets/img/logo/pst-logo.png" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="/admin/assets/vendor/fonts/fontawesome.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/fonts/tabler-icons.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/fonts/flag-icons.css" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/core.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/theme-default.css" />
+  <link rel="stylesheet" href="/admin/assets/css/demo.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/css/pages/page-auth.css" />
+
+  <!-- JS -->
+  <script src="/admin/assets/vendor/js/helpers.js"></script>
+  <script src="/admin/assets/vendor/js/template-customizer.js"></script>
+</head>
+<body>
+  <div class="authentication-wrapper authentication-cover">
+    <a href="/" class="app-brand auth-cover-brand">
+      <span class="app-brand-logo demo">
+        <img src="/admin/assets/img/logo/ramah.jpg" width="50" height="50" alt="">
+      </span>
+      <span class="app-brand-text demo text-heading fw-bold">RamahTech</span>
+    </a>
+
+    <div class="authentication-inner row m-0">
+      <div class="d-none d-lg-flex col-lg-8 p-0">
+        <div class="auth-cover-bg d-flex justify-content-center align-items-center">
+          <img src="/admin/assets/img/illustrations/auth-verify-email-illustration-light.png" class="my-5 auth-illustration" />
+          <img src="/admin/assets/img/illustrations/bg-shape-image-light.png" class="platform-bg" />
+        </div>
+      </div>
+
+      <div class="d-flex col-12 col-lg-4 align-items-center authentication-bg p-6 p-sm-12">
+        <div class="w-px-400 mx-auto mt-5">
+          <h4 class="mb-1">Verify your email ✉️</h4>
+          <p class="text-start mb-0">
+            Account activation link sent to your email address: <%= email %>. Please follow the link to continue.
+          </p>
+          <a class="btn btn-primary w-100 my-6" href="/login">Skip for now</a>
+          <p class="text-center mb-0">
+            Didn’t get the mail? <a href="/email/resend">Resend</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/admin/assets/vendor/js/core.js"></script>
+  <script src="/admin/assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <% if (success) { %>
+    <script>
+      Swal.fire({ icon: 'success', title: 'Berhasil!', text: '<%= success %>', showConfirmButton: false, timer: 2000 });
+    </script>
+  <% } %>
+
+  <% if (error) { %>
+    <script>
+      Swal.fire({ icon: 'error', title: 'Gagal!', text: '<%= error %>', showConfirmButton: false, timer: 2000 });
+    </script>
+  <% } %>
+</body>
+</html>

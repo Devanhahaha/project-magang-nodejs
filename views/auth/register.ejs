@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="/admin/assets/" data-template="vertical-menu-template" data-style="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Register | <%= appName %></title>
+  <meta name="description" content="" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/admin/assets/img/logo/ramah.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap" rel="stylesheet" />
+
+  <!-- Config -->
+  <script src="/admin/assets/js/config.js"></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="/admin/assets/vendor/fonts/fontawesome.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/fonts/tabler-icons.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/fonts/flag-icons.css" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="/admin/assets/css/demo.css" />
+
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="/admin/assets/vendor/libs/node-waves/node-waves.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/libs/typeahead-js/typeahead.css" />
+  <link rel="stylesheet" href="/admin/assets/vendor/libs/@form-validation/form-validation.css" />
+
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="/admin/assets/vendor/css/pages/page-auth.css" />
+
+  <!-- Helpers -->
+  <script src="/admin/assets/vendor/js/helpers.js"></script>
+  <script src="/admin/assets/vendor/js/template-customizer.js"></script>
+</head>
+
+<body>
+  <div class="authentication-wrapper authentication-cover">
+    <a href="/login" class="app-brand auth-cover-brand">
+      <span class="app-brand-logo demo">
+          <img src="/<%= components?.logo_apk %>" width="50" height="50" alt="">
+      </span>
+      <span class="app-brand-text demo text-heading fw-bold"><%= components?.nama_apk || 'Aplikasi' %></span>
+  </a>
+
+    <div class="authentication-inner row m-0">
+      <div class="d-none d-lg-flex col-lg-8 p-0">
+        <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
+          <img src="/admin/assets/img/illustrations/auth-register-illustration-light.png" alt="auth-register-cover" class="my-5 auth-illustration" />
+          <img src="/admin/assets/img/illustrations/bg-shape-image-light.png" alt="auth-register-cover" class="platform-bg" />
+        </div>
+      </div>
+
+      <div class="d-flex col-12 col-lg-4 align-items-center authentication-bg p-sm-12 p-6">
+        <div class="w-px-400 mx-auto mt-12 pt-5">
+          <h4 class="mb-1">Adventure starts here 🚀</h4>
+          <p class="mb-6">Make your app management easy and fun!</p>
+
+          <form id="formAuthentication" class="mb-6" action="/register-authentication" method="POST">
+            <div class="mb-6">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="name" value="<%= old.name || '' %>" autofocus />
+            </div>
+            <div class="mb-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" value="<%= old.email || '' %>" />
+            </div>
+            <div class="mb-6">
+              <label for="contact" class="form-label">Contact</label>
+              <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter your contact" value="<%= old.contact|| '' %>" />
+            </div>
+            <div class="mb-6 form-password-toggle">
+              <label class="form-label" for="password">Password</label>
+              <div class="input-group input-group-merge">
+                <input type="password" id="password" class="form-control" name="password" placeholder="************" />
+                <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+              </div>
+            </div>
+
+            <div class="mb-6 form-password-toggle">
+              <label class="form-label" for="password_confirmation">Password Confirmed</label>
+              <div class="input-group input-group-merge">
+                <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="************" />
+                <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+              </div>
+            </div>
+
+            <div class="my-8">
+              <div class="form-check mb-0 ms-2">
+                <input class="form-check-input" type="checkbox" id="terms-conditions" name="trems" />
+                <label class="form-check-label" for="terms-conditions">
+                  I agree to <a href="#">privacy policy & terms</a>
+                </label>
+              </div>
+            </div>
+
+            <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
+          </form>
+
+          <p class="text-center">
+            <span>Already have an account?</span>
+            <a href="/login"><span>Sign in instead</span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JS -->
+  <script src="/admin/assets/vendor/js/core.js"></script>
+
+  <!-- Vendors JS -->
+  <script src="/admin/assets/vendor/libs/@form-validation/popular.js"></script>
+  <script src="/admin/assets/vendor/libs/@form-validation/bootstrap5.js"></script>
+  <script src="/admin/assets/vendor/libs/@form-validation/auto-focus.js"></script>
+
+  <!-- Main JS -->
+  <script src="/admin/assets/js/main.js"></script>
+  <script src="/admin/assets/js/pages-auth.js"></script>
+
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <% if (error && error.length > 0) { %>
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
+        text: '<%= error[0] %>',
+        showConfirmButton: false,
+        timer: 2000
+      });
+    </script>
+    <% } %>
+    
+    <% if (success && success.length > 0) { %>
+    <script>
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '<%= success[0] %>',
+        showConfirmButton: false,
+        timer: 2000
+      });
+    </script>
+    <% } %>
+    
+</body>
+</html>

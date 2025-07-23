@@ -1,0 +1,39 @@
+<% var title="Detail News" ; %>
+
+<div class="page-content">
+  <div class="container text-center mt-4">
+    <% if (news.image) { %>
+      <img src="/<%= news.image %>" class="img-fluid rounded shadow mb-4" style="max-height: 300px;" alt="<%= news.title %>">
+    <% } else { %>
+      <p class="text-muted">Foto tidak tersedia.</p>
+    <% } %>
+  </div>
+
+  <div class="content-body pt-3">
+    <div class="container">
+      <div class="card shadow p-4 mb-4">
+        <h4 class="mb-2 text-center"><%= news.category %></h4>
+        <p class="text-center text-warning"><%= news.title %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Description</h6>
+        <p class="mb-0 text-dark"><%- news.description %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Tanggal Berita Ini Dibuat</h6>
+        <p class="mb-0 text-dark"><%= news.createdAt %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Tanggal Kejadian</h6>
+        <p class="mb-0 text-dark"><%= news.tanggal %></p>
+      </div>
+
+      <div class="text-center mb-3">
+        <a href="/news" class="btn btn-secondary me-2">← Kembali</a>
+      </div>
+    </div>
+  </div>
+</div>
