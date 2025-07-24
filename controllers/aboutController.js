@@ -69,7 +69,7 @@ exports.update = async (req, res) => {
       const oldPath = path.join(__dirname, '..', 'public', about.image);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
 
-      about.image = `storage/files/about/${req.file.filename}`;
+      about.image = `${req.file.filename}`;
     }
 
     about.description = description;

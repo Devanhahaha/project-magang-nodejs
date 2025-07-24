@@ -67,7 +67,7 @@ exports.update = async (req, res) => {
 
     home.title = title;
     home.subtitle = subtitle;
-    home.banner = 'storage/files/banner/' + banner.filename;
+    home.banner = banner.filename;
 
     await home.save();
     req.flash('success', 'Home content updated successfully!');

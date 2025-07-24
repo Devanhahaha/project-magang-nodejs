@@ -1,6 +1,4 @@
 <% var title="Services" ; %>
-
-
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
@@ -11,7 +9,7 @@
     </div>
 
     <!-- Add Offcanvas -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="add-new-record">
+    <div class="offcanvas offcanvas-custom offcanvas-end" tabindex="-1" id="add-new-record">
       <div class="offcanvas-header border-bottom">
         <h5 class="offcanvas-title">Add New Services Content</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
@@ -59,7 +57,7 @@
             <% services.forEach((service, index) => { %>
               <tr>
                 <td><%= index + 1 %></td>
-                <td><a href="/services/detail/<%= service.slug %>"><img src="/<%= service.banner %>" height="50" style="object-fit: cover;"></a></td>
+                <td><a href="/services/detail/<%= service.slug %>"><img src="/storage/files/services/<%= service.banner %>" height="50" style="object-fit: cover;"></a></td>
                 <td><%= service.title %></td>
                 <td><%= service.subtitle %></td>
                 <td data-bs-toggle="modal" data-bs-target="#descModal<%= service.id %>" style="cursor: pointer;">
@@ -85,7 +83,7 @@
                     <i class="ti ti-pencil"></i>
                   </button>
 
-                  <div class="offcanvas offcanvas-end" tabindex="-1" id="add-new-record-update-<%= service.id %>">
+                  <div class="offcanvas offcanvas-custom offcanvas-end" tabindex="-1" id="add-new-record-update-<%= service.id %>">
                     <div class="offcanvas-header border-bottom">
                       <h5 class="offcanvas-title">Update Services Content</h5>
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>

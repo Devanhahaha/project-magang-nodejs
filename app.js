@@ -38,7 +38,7 @@ app.use(express.json());
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/storage', express.static(path.join(__dirname, 'public', 'storage')));
+app.use('/storage', express.static(path.join(__dirname, 'public/storage')));
 
 // View Engine Setup
 app.set('view engine', 'ejs');

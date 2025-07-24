@@ -36,35 +36,6 @@ function validateNewsInput({ image, category, title, description, tanggal }, isU
   return errors;
 }
 
-// exports.index = async (req, res) => {
-//   try {
-//     const search = req.query.search;
-//     const whereClause = {
-//       user_id: req.session.user.id
-//     };
-//     if (search) {
-//       const { Op } = require('sequelize');
-//       whereClause[Op.or] = [
-//         { category: { [Op.iLike]: `%${search}%` } },
-//         { title: { [Op.iLike]: `%${search}%` } }, // opsional
-//       ];
-//     }
-//     const news = await News.findAll({
-//       where: whereClause,
-//       order: [['id', 'DESC']],
-//     });
-//     res.render('userpage/news/index', {
-//       title: 'News',
-//       news,
-//       layout: 'userpage/layouts/main',
-//       search, 
-//     });
-//   } catch (error) {
-//     req.flash('error', 'Failed to load news');
-//     res.redirect('/dashboard-user');
-//   }
-// };
-
 exports.index = async (req, res) => {
   try {
     const { search, page = 1, limit = 5 } = req.query; 
@@ -120,7 +91,7 @@ exports.store = async (req, res) => {
 
     await News.create({
       user_id: req.session.user.id,
-      image: 'storage/files/news/' + image.filename,
+      image: image.filename,
       category,
       title,
       description,
@@ -181,7 +152,7 @@ exports.update = async (req, res) => {
     if (image) {
       const oldPath = path.join('public', news.image);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-      news.image = 'storage/files/news/' + image.filename;
+      news.image = image.filename;
     }
 
     news.category = category;

@@ -1,5 +1,4 @@
 <% var title="About" ; %>
-
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row g-6">
             <div class="col-lg-8 mx-auto">
@@ -20,11 +19,11 @@
                         <div class="card academy-content shadow-none border">
                             <div class="p-2">
                                 <div class="cursor-pointer">
-                                    <img src="/<%= about.image %>" alt="image" class="img-fluid rounded shadow"
+                                    <img src="/storage/files/about/<%= about.image %>" alt="image" class="img-fluid rounded shadow"
                                         data-bs-toggle="offcanvas" data-bs-target="#editAboutModal" />
                                 </div>
 
-                                <div class="offcanvas offcanvas-end" tabindex="-1" id="editAboutModal"
+                                <div class="offcanvas offcanvas-custom offcanvas-end" tabindex="-1" id="editAboutModal"
                                     aria-labelledby="editAboutLabel">
                                     <div class="offcanvas-header border-bottom">
                                         <h5 class="offcanvas-title">Update About Content</h5>
@@ -132,7 +131,19 @@
                         <% } %>
                         <script src="https://cdn.ckeditor.com/4.22.1/standard-all/ckeditor.js"></script>
                         <script>
-                            CKEDITOR.replace('description')
-                            CKEDITOR.replace('vision')
-                            CKEDITOR.replace('mission')
-                        </script>
+                            var descriptionEditor, visionEditor, missionEditor;
+                          
+                            document.getElementById('editAboutModal').addEventListener('shown.bs.offcanvas', function () {
+                              descriptionEditor = CKEDITOR.replace('description');
+                              visionEditor = CKEDITOR.replace('vision');
+                              missionEditor = CKEDITOR.replace('mission');
+                            });
+                          
+                            document.getElementById('editAboutModal').addEventListener('hidden.bs.offcanvas', function () {
+                              if (descriptionEditor) {
+                                descriptionEditor.destroy();
+                                visionEditor.destroy();
+                                missionEditor.destroy();
+                              }
+                            });
+                        </script>                          

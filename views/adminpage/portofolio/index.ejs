@@ -9,7 +9,7 @@
   </div>
 
   <!-- Add New Form -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="add-new-record">
+  <div class="offcanvas offcanvas-custom offcanvas-end" tabindex="-1" id="add-new-record">
     <div class="offcanvas-header border-bottom">
       <h5 class="offcanvas-title">Add New Portofolio</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
@@ -57,7 +57,7 @@
     <% portofolios.forEach((portofolio) => { %>
     <div class="col-md-6 col-lg-4 mb-4">
       <div class="card h-100 shadow-sm position-relative overflow-hidden border-0 rounded-4">
-        <a href="/portofolio/detail/<%= portofolio.slug %>"><img class="card-img-top object-fit-cover" style="height: 220px; object-fit: cover;" src="/<%= portofolio.image %>" alt="Portfolio Image" /></a>
+        <a href="/portofolio/detail/<%= portofolio.slug %>"><img class="card-img-top object-fit-cover" style="height: 220px; object-fit: cover;" src="/storage/files/portofolio/<%= portofolio.image %>" alt="Portfolio Image" /></a>
         <div class="position-absolute top-0 end-0 p-2">
           <div class="dropdown">
             <button class="btn btn-sm" type="button" data-bs-toggle="dropdown">
@@ -111,7 +111,7 @@
       </div>
 
       <!-- Edit Form -->
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="edit-<%= portofolio.id %>">
+      <div class="offcanvas offcanvas-custom offcanvas-end" tabindex="-1" id="edit-<%= portofolio.id %>">
         <div class="offcanvas-header border-bottom">
           <h5 class="offcanvas-title">Update Portofolio</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>

@@ -75,7 +75,7 @@ exports.store = async (req, res) => {
       }
   
       await Services.create({
-        banner: 'storage/files/services/' + banner.filename,
+        banner: banner.filename,
         title,
         subtitle,
         slug,
@@ -128,7 +128,7 @@ exports.update = async (req, res) => {
     if (req.file) {
       const oldPath = path.join(__dirname, '../public', service.banner);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-      service.banner = 'storage/files/services/' + req.file.filename;
+      service.banner = req.file.filename;
     }
 
     service.title = title;

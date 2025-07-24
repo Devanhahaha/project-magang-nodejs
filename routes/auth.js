@@ -40,7 +40,4 @@ router.get('/logout', authController.logout);
 router.get('/email/verify', verifyEmailController.showVerificationNotice);
 router.get('/email/resend', verifyEmailController.sendVerificationLink);
 
-router.get('/verify-recaptcha', authController.showRecaptcha);
-router.post('/verify-recaptcha', authController.verifyRecaptcha);
-
 module.exports = router;

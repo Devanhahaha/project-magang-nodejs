@@ -4,65 +4,11 @@ const { body, validationResult, check } = require('express-validator');
 const axios = require('axios');
 const RECAPTCHA_SECRET = '6LcfD4crAAAAAP9ogO67LGJOlgsfyV97Yyl33ucw';
 
-exports.showRecaptcha = (req, res) => {
-  if (!req.session.user) {
-    req.flash('error', 'Silakan login terlebih dahulu.');
-    return res.redirect('/login');
-  }
-
-  res.render('auth/recaptcha', {
-    layout: false,
-    siteKey: '6LcfD4crAAAAAALgkLPDMqxPEbFDqIt6YnYyZFcF',
-    appName: 'CV Ramah Technology',
-  });
-};
-
-exports.verifyRecaptcha = async (req, res) => {
-  const token = req.body['g-recaptcha-response'];
-  if (!token) {
-    req.flash('error', 'Verifikasi captcha gagal. Silakan coba lagi.');
-    return res.redirect('/verify-recaptcha');
-  }
-
-  try {
-    const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify`, null, {
-      params: {
-        secret: RECAPTCHA_SECRET, 
-        response: token,
-      },
-    });
-
-    if (response.data.success) {
-      // ✅ Captcha sukses
-      req.session.user.isVerified = true;
-      req.flash('success', 'Verifikasi captcha berhasil!');
-
-      const role = req.session.user.role;
-
-      if (role === 'admin') {
-        return res.redirect('/dashboard');
-      } else if (role === 'user') {
-        return res.redirect('/dashboard-user');
-      } else {
-        req.flash('error', 'Role is not recognized.');
-        return res.redirect('/login');
-      }
-    } else {
-      
-      req.flash('error', 'Verifikasi captcha gagal. Silakan coba lagi.');
-      return res.redirect('/verify-recaptcha');
-    }
-  } catch (err) {
-    console.error('❌ Error verifying captcha:', err);
-    req.flash('error', 'Terjadi kesalahan saat verifikasi captcha.');
-    return res.redirect('/verify-recaptcha');
-  }
-};
-
 exports.showLogin = (req, res) => {
   res.render('auth/login', {
     layout: false,
     appName: 'CV Ramah Technology',
+    siteKey: '6LcfD4crAAAAAALgkLPDMqxPEbFDqIt6YnYyZFcF',
   });
 };
 
@@ -71,8 +17,34 @@ exports.authenticate = async (req, res) => {
   if (!errors.isEmpty()) {
     req.flash('error', 'Email dan password tidak valid!');
     return res.redirect('/login');
-  }  
+  }
 
+  const token = req.body['g-recaptcha-response'];
+  if (!token) {
+    req.flash('error', 'Captcha tidak boleh kosong.');
+    return res.redirect('/login');
+  }
+
+  // Verifikasi captcha ke Google
+  try {
+    const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify`, null, {
+      params: {
+        secret: RECAPTCHA_SECRET,
+        response: token,
+      },
+    });
+
+    if (!response.data.success) {
+      req.flash('error', 'Captcha tidak valid!');
+      return res.redirect('/login');
+    }
+  } catch (err) {
+    console.error('❌ Error verifying captcha:', err);
+    req.flash('error', 'Terjadi kesalahan saat verifikasi captcha.');
+    return res.redirect('/login');
+  }
+
+  // Lanjut login setelah captcha sukses
   const { email, password } = req.body;
 
   const user = await User.findOne({
@@ -92,7 +64,6 @@ exports.authenticate = async (req, res) => {
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
-
   if (!isMatch) {
     req.flash('error', 'Password salah!');
     return res.redirect('/login');
@@ -105,12 +76,20 @@ exports.authenticate = async (req, res) => {
     name: user.name,
     email: user.email,
     contact: user.contact,
-    role: roleName, 
-    isVerified: false,
+    role: roleName,
+    isVerified: true, 
   };
-  
-req.flash('success', 'Login successfully! Please verify the captcha.');
-return res.redirect('/verify-recaptcha');
+
+  req.flash('success', 'Login Successfully!');
+
+  if (roleName === 'admin') {
+    return res.redirect('/dashboard');
+  } else if (roleName === 'user') {
+    return res.redirect('/dashboard-user');
+  } else {
+    req.flash('error', 'Role tidak dikenali.');
+    return res.redirect('/login');
+  }
 };
 
 exports.validateLogin = [

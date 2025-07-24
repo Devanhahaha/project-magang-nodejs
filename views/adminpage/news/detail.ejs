@@ -3,7 +3,7 @@
 <div class="page-content">
   <div class="container text-center mt-4">
     <% if (news.image) { %>
-      <img src="/<%= news.image %>" class="img-fluid rounded shadow mb-4" style="max-height: 300px;" alt="<%= news.title %>">
+      <img src="/storage/files/news/<%= news.image %>" class="img-fluid rounded shadow mb-4" style="max-height: 300px;" alt="<%= news.title %>">
     <% } else { %>
       <p class="text-muted">Foto tidak tersedia.</p>
     <% } %>

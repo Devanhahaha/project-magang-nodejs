@@ -95,7 +95,8 @@ exports.store = async (req, res) => {
 
   try {
     await Portofolio.create({
-      image: 'storage/files/portofolio/' + image.filename,
+      // Hanya simpan nama file-nya saja (tanpa path)
+      image: image.filename,
       category,
       title,
       description,
@@ -103,7 +104,7 @@ exports.store = async (req, res) => {
       end_date,
       techstack,
       slug,
-    });
+    });    
     req.flash('success', 'Portofolio Content created successfully!');
     res.redirect('/portofolio');
   } catch (err) {
@@ -137,10 +138,14 @@ exports.update = async (req, res) => {
     if (!portofolio) throw new Error('Not found');
 
     if (image) {
+      // Hapus gambar lama dari folder public
       const oldPath = path.join('public', portofolio.image);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-      portofolio.image = 'storage/files/portofolio/' + image.filename;
+    
+      // Simpan hanya nama file-nya saja, bukan path
+      portofolio.image = image.filename;
     }
+    
 
     portofolio.category = category;
     portofolio.title = title;

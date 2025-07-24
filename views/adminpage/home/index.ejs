@@ -1,5 +1,4 @@
 <% var title="Home" ; %>
-
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row g-6">
             <div class="col-lg-8 mx-auto">
@@ -21,12 +20,12 @@
                             <div class="p-2">
                                 <% if (homes) { %>
                                     <div class="cursor-pointer">
-                                        <img src="/<%= homes.banner %>" alt="image" class="img-fluid rounded shadow"
+                                        <img src="/storage/files/banner/<%= homes.banner %>" alt="image" class="img-fluid rounded shadow"
                                             data-bs-toggle="offcanvas" data-bs-target="#editHome<%= homes.id %>">
                                     </div>
 
                                     <!-- Offcanvas for edit -->
-                                    <div class="offcanvas offcanvas-end" tabindex="-1" id="editHome<%= homes.id %>"
+                                    <div class="offcanvas offcanvas-custom offcanvas-end" tabindex="-1" id="editHome<%= homes.id %>"
                                         aria-labelledby="offcanvasLabel">
                                         <div class="offcanvas-header border-bottom">
                                             <h5 class="offcanvas-title" id="offcanvasLabel">Update Home Content</h5>
@@ -66,9 +65,8 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <% } %>
+                                <% } %>
                             </div>
-
                             <% if (homes) { %>
                                 <div class="card-body pt-4 text-center">
                                     <h5>About your company</h5>

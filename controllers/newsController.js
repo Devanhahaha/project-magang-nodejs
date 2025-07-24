@@ -88,7 +88,7 @@ exports.store = async (req, res) => {
     }
 
     await News.create({
-      image: 'storage/files/news/' + image.filename,
+      image: image.filename,
       category,
       title,
       description,
@@ -103,6 +103,7 @@ exports.store = async (req, res) => {
     req.flash('old', req.body);
     res.redirect('/news');
   }
+  console.log('Uploaded file:', image);
 };
 
 exports.showBySlug = async (req, res) => {
@@ -133,7 +134,11 @@ exports.update = async (req, res) => {
     const news = await News.findByPk(id);
     if (!news) throw new Error('News not found.');
 
-    const errors = validateNewsInput({ image: image || 'dummy.jpg', category, title, description, tanggal }, true);
+    const errors = validateNewsInput(
+      { image: image ? image.filename : news.image, category, title, description, tanggal },
+      true
+    );
+
     if (errors.length > 0) {
       req.flash('error', errors);
       req.flash('old', { ...req.body, id });
@@ -141,11 +146,15 @@ exports.update = async (req, res) => {
     }
 
     if (image) {
+      // Hapus file lama jika ada
       const oldPath = path.join('public', news.image);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-      news.image = 'storage/files/news/' + image.filename;
+
+      // Hanya jika ada gambar baru, update field image
+      news.image = image.filename;
     }
 
+    // Update field lainnya
     news.category = category;
     news.title = title;
     news.description = description;

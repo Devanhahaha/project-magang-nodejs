@@ -11,6 +11,20 @@
   height: 64px;
 }
 
+.offcanvas-custom {
+  width: 80% !important;
+  left: 10% !important; 
+  right: auto !important;
+  border-radius: 12px;
+}
+
+@media (min-width: 768px) {
+  .offcanvas-custom {
+    top: 10%;
+    transform: none !important;
+  }
+}
+
 .app-brand-logo.demo {
   -ms-flex-align: center;
   align-items: center;
