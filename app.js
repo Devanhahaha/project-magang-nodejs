@@ -85,7 +85,7 @@ app.use('/calendar', authMiddleware);
 // Global Middleware lainnya
 app.use((req, res, next) => {
   res.locals.title = 'Default Title';
-  res.locals.appName = 'CV Ramah Technology';
+  res.locals.appName = 'CV Ramah Teknologi';
   res.locals.currentRoute = req.path.split('/')[1] || 'news';
   // console.log('🌟 SESSION USER:', req.session.user);
   res.locals.user = req.session.user || null;

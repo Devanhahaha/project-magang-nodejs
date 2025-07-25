@@ -8,7 +8,7 @@
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/admin/assets/img/logo/ramah.jpg" />
+  <link rel="icon" type="image/x-icon" href="/admin/assets/img/logo/ramah-bg.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,12 +44,14 @@
 
 <body>
   <div class="authentication-wrapper authentication-cover">
-    <a href="/login" class="app-brand auth-cover-brand">
-      <span class="app-brand-logo demo">
-          <img src="/<%= components?.logo_apk %>" width="50" height="50" alt="">
+    <a href="/register" class="app-brand auth-cover-brand" style="display: flex; align-items: center; gap: 8px; font-style: italic;">
+      <img src="/<%= components?.logo_apk %>" 
+           alt="Logo" 
+           style="max-height: 50px; height: auto; width: auto; object-fit: contain;">
+      <span class="app-brand-text demo text-heading fw-bold">
+          <%= components?.nama_apk || 'Aplikasi' %>
       </span>
-      <span class="app-brand-text demo text-heading fw-bold"><%= components?.nama_apk || 'Aplikasi' %></span>
-  </a>
+    </a> 
 
     <div class="authentication-inner row m-0">
       <div class="d-none d-lg-flex col-lg-8 p-0">
