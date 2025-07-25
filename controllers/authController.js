@@ -7,7 +7,7 @@ const RECAPTCHA_SECRET = '6LcfD4crAAAAAP9ogO67LGJOlgsfyV97Yyl33ucw';
 exports.showLogin = (req, res) => {
   res.render('auth/login', {
     layout: false,
-    appName: 'CV Ramah Technology',
+    appName: 'CV Ramah Teknologi',
     siteKey: '6LcfD4crAAAAAALgkLPDMqxPEbFDqIt6YnYyZFcF',
   });
 };
