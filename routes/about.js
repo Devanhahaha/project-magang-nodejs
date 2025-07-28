@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const aboutController = require('../controllers/aboutController');
+const aboutController = require('../controllers/dashboard/aboutController');
 const multer = require('multer');
 const path = require('path');
 
 // Konfigurasi upload gambar
 const upload = multer({
   storage: multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'public/storage/files/about'),
+    destination: (req, file, cb) => cb(null, 'public/dashboard/storage/files/about'),
     filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
   }),
   limits: { fileSize: 2 * 1024 * 1024 }, // max 2MB
@@ -26,7 +26,7 @@ router.post('/update/:id', (req, res, next) => {
     if (err) {
       req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
       req.flash('old', req.body);
-      return res.redirect('/about');
+      return res.redirect('/dashboard/about');
     }
     next();
   });

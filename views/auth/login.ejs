@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default"
-    data-assets-path="/admin/assets/" data-template="vertical-menu-template" data-style="light">
+    data-assets-path="/dashboard/admin/assets/" data-template="vertical-menu-template" data-style="light">
 
 <head>
     <meta charset="utf-8" />
@@ -8,34 +8,34 @@
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Login | <%= appName %></title>
 
-    <link rel="icon" type="image/x-icon" href="/admin/assets/img/logo/ramah-bg.png" />
+    <link rel="icon" type="image/x-icon" href="/dashboard/admin/assets/img/logo/ramah-bg.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 
-    <script src="/admin/assets/js/config.js"></script>
-    <link rel="stylesheet" href="/admin/assets/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/fonts/tabler-icons.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/fonts/flag-icons.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/core.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/theme-default.css" />
-    <link rel="stylesheet" href="/admin/assets/css/demo.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/libs/node-waves/node-waves.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/libs/typeahead-js/typeahead.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/libs/@form-validation/form-validation.css" />
-    <link rel="stylesheet" href="/admin/assets/vendor/css/pages/page-auth.css" />
-    <script src="/admin/assets/vendor/js/helpers.js"></script>
-    <script src="/admin/assets/vendor/js/template-customizer.js"></script>
+    <script src="/dashboard/admin/assets/js/config.js"></script>
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/fonts/flag-icons.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/css/rtl/core.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/css/rtl/theme-default.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/css/demo.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/libs/@form-validation/form-validation.css" />
+    <link rel="stylesheet" href="/dashboard/admin/assets/vendor/css/pages/page-auth.css" />
+    <script src="/dashboard/admin/assets/vendor/js/helpers.js"></script>
+    <script src="/dashboard/admin/assets/vendor/js/template-customizer.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
     <div class="authentication-wrapper authentication-cover">
-        <a href="/login" class="app-brand auth-cover-brand" style="display: flex; align-items: center; gap: 8px; font-style: italic;">
-                <img src="/<%= components?.logo_apk %>" 
+        <a href="/login" class="app-brand auth-cover-brand" style="display: flex; align-items: center; gap: 8px;">
+                <img src="/dashboard/storage/files/components/<%= components?.logo_apk %>" 
                      alt="Logo" 
                      style="max-height: 50px; height: auto; width: auto; object-fit: contain;">
             <span class="app-brand-text demo text-heading fw-bold">
@@ -46,9 +46,9 @@
         <div class="authentication-inner row m-0">
             <div class="d-none d-lg-flex col-lg-8 p-0">
                 <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-                    <img src="/admin/assets/img/illustrations/auth-login-illustration-light.png"
+                    <img src="/dashboard/admin/assets/img/illustrations/auth-login-illustration-light.png"
                         alt="auth-login-cover" class="my-5 auth-illustration" />
-                    <img src="/admin/assets/img/illustrations/bg-shape-image-light.png"
+                    <img src="/dashboard/admin/assets/img/illustrations/bg-shape-image-light.png"
                         alt="auth-login-cover" class="platform-bg" />
                 </div>
             </div>
@@ -100,12 +100,12 @@
         </div>
     </div>
 
-    <script src="/admin/assets/vendor/js/core.js"></script>
-    <script src="/admin/assets/vendor/libs/@form-validation/popular.js"></script>
-    <script src="/admin/assets/vendor/libs/@form-validation/bootstrap5.js"></script>
-    <script src="/admin/assets/vendor/libs/@form-validation/auto-focus.js"></script>
-    <script src="/admin/assets/js/main.js"></script>
-    <script src="/admin/assets/js/pages-auth.js"></script>
+    <script src="/dashboard/admin/assets/vendor/js/core.js"></script>
+    <script src="/dashboard/admin/assets/vendor/libs/@form-validation/popular.js"></script>
+    <script src="/dashboard/admin/assets/vendor/libs/@form-validation/bootstrap5.js"></script>
+    <script src="/dashboard/admin/assets/vendor/libs/@form-validation/auto-focus.js"></script>
+    <script src="/dashboard/admin/assets/js/main.js"></script>
+    <script src="/dashboard/admin/assets/js/pages-auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <% if (error && error.length > 0) { %>

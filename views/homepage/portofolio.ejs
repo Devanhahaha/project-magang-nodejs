@@ -1,0 +1,136 @@
+<%- include('partials/header') %>
+
+<main class="portfolio-page">
+
+  <!-- HERO FULL WIDTH -->
+  <section class="portofolio-hero" data-aos="fade-down">
+        <div class="hero-overlay-text">
+            <h1  data-aos="zoom-in">Portofolio Kami</h1>
+            <p  data-aos="zoom-in">Kumpulan proyek terbaik yang telah kami kerjakan untuk membantu transformasi digital bisnis di Indonesia</p>
+        </div>
+
+        <img src="/homepage/images/robot.gif" alt="Robot Icon" class="hero-robot" data-aos="fade-up-left">
+  </section>
+
+  <!-- ISI KONTEN DALAM CONTAINER -->
+  <section class="portfolio-container">
+    <!-- Search & Filter -->
+    <div class="search-filter">
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="category-filter">
+        <button class="active">Semua proyek</button>
+        <button>Web Development</button>
+        <button>Mobile Apps</button>
+      </div>
+    </div>
+
+    <!-- Portfolio Cards -->
+    <div class="portfolio-grid">
+      <!-- CARD 1 -->
+      <% portofolios.forEach(portofolio => { %>
+      <article class="portfolio-card" data-aos="zoom-in-down">
+        <img src="/dashboard/storage/files/portofolio/<%= portofolio.image %>" alt="Aplikasi Travel Umrah">
+        <div class="content">
+          <span class="tag"><%= portofolio.category %></span>
+          <h3><%= portofolio.title %></h3>
+          <p><%- portofolio.description %></p>
+          <div class="card-footer">
+            <span class="date">📅 <%= new Date(portofolio.tanggal).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) %> 
+              s/d 
+            <%= new Date(portofolio.end_date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) %></span>
+            <div class="icons">
+              <i class="fa fa-share-alt"></i>
+              <i class="fa fa-eye"
+                data-title="<%= portofolio.title %>"
+                data-description="<%- portofolio.description %>"
+                data-image="/dashboard/storage/files/portofolio/<%= portofolio.image %>"
+                data-tech="<%= portofolio.techstack %>"
+                data-contact="https://wa.me/6281234567890">
+              </i>
+            </div>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+
+      <!-- CARD 2 -->
+      <!-- <article class="portfolio-card" data-aos="zoom-in-down">
+        <img src="/homepage/images/arsip digital.jpg" alt="Aplikasi Arsip Digital">
+        <div class="content">
+          <span class="tag">Website</span>
+          <h3>Aplikasi Arsip Digital</h3>
+          <p>Aplikasi website untuk pengelolaan arsip digital perusahaan.</p>
+          <div class="card-footer">
+            <span class="date">Januari 2025</span>
+            <div class="icons">
+              <i class="fa fa-share-alt"></i>
+              <i class="fa fa-eye"
+                data-title="Aplikasi Arsip Digital"
+                data-description="Aplikasi website untuk pengelolaan arsip digital perusahaan."
+                data-image="/homepage/images/arsip digital.jpg"
+                data-tech="Laravel,MySQL,Bootstrap"
+                data-contact="https://wa.me/6281234567890">
+              </i>
+            </div>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- CARD 3 -->
+      <!-- <article class="portfolio-card" data-aos="zoom-in-down">
+        <img src="/homepage/images/arsip digital.jpg" alt="Aplikasi Arsip Digital">
+        <div class="content">
+          <span class="tag">Website</span>
+          <h3>Aplikasi Arsip Digital</h3>
+          <p>Aplikasi website untuk pengelolaan arsip digital perusahaan.</p>
+          <div class="card-footer">
+            <span class="date">Januari 2025</span>
+            <div class="icons">
+              <i class="fa fa-share-alt"></i>
+              <i class="fa fa-eye"
+                data-title="Aplikasi Arsip Digital 2"
+                data-description="Deskripsi Card ke-3."
+                data-image="/homepage/images/arsip digital.jpg"
+                data-tech="Laravel,MySQL,Bootstrap"
+                data-contact="https://wa.me/6281234567890">
+              </i>
+            </div>
+          </div>
+        </div>
+      </article> -->
+    </div>
+
+    <!-- Detail Portofolio Modal -->
+    <div id="portfolioModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+
+        <h2 id="modal-title">Detail Proyek</h2>
+        <img id="modal-image" src="" alt="Project Image">
+
+        <span id="modal-category" class="modal-tag">Mobile App</span>
+
+        <h3 id="modal-project-title">Aplikasi Travel Umrah</h3>
+
+        <h4>Deskripsi Proyek</h4>
+        <div id="modal-description"></div>
+
+        <h4>Teknologi yang di gunakan</h4>
+        <div class="tech-stack" id="modal-tech-stack">
+          <span class="tech react">React.js</span>
+          <span class="tech node">Node.js</span>
+          <span class="tech mongo">MongoDB</span>
+          <span class="tech express">Express</span>
+          <span class="tech aws">AWS</span>
+        </div>
+
+          <a id="modal-contact-btn" href="#" target="_blank" class="modal-btn">Hubungi kami untuk proyek serupa</a>
+        </div>
+     </div>
+
+
+  </section>
+
+</main>

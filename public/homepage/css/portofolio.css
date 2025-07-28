@@ -1,0 +1,401 @@
+/* === GENERAL === */
+.portfolio-page {
+  font-family: Arial, sans-serif;
+}
+
+/* === HERO === */
+.portfolio-page .portofolio-hero {
+  width: 100%;
+  background: url('/images/icon protofolio.jpeg') no-repeat center center;
+  background-size: cover;
+  height: 350px;
+  position: relative;
+  overflow: hidden; /* Biar robot nggak keluar area hero */
+}
+
+.portfolio-page .portofolio-hero .hero-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  max-width: 90%;
+}
+
+.portfolio-page .portofolio-hero .hero-overlay-text h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.portfolio-page .portofolio-hero .hero-overlay-text p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* === ICON ROBOT === */
+.portfolio-page .portofolio-hero .hero-robot {
+  position: absolute;
+  bottom: 0;
+  right: 20px;  /* Sesuaikan jarak dari sisi kanan */
+  width: 200px; /* Atur ukuran icon robot */
+  max-width: 15%;
+}
+
+@media (max-width: 768px) {
+  .portfolio-page .portofolio-hero .hero-robot {
+    width: 80px; /* Responsive robot di HP */
+    right: 10px;
+  }
+}
+
+
+/* === CONTAINER === */
+.portfolio-page .portfolio-container {
+  padding: 50px 8%;
+}
+
+/* === SEARCH & FILTER === */
+.portfolio-page .search-filter {
+  margin-top: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.portfolio-page .search-box input[type="text"] {
+  width: 250px;
+  max-width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.portfolio-page .category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.portfolio-page .category-filter button {
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.portfolio-page .category-filter button:hover {
+  background: #1a3e82;
+  color: #fff;
+}
+
+.portfolio-page .category-filter button.active {
+  background: #1a3e82;
+  color: #fff;
+}
+
+/* === PORTFOLIO GRID === */
+.portfolio-page .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  align-items: stretch; /* Pastikan semua card sama tinggi */
+  margin-bottom: 10%;
+}
+
+/* === CARD === */
+.portfolio-page .portfolio-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-page .portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.portfolio-page .portfolio-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.portfolio-page .portfolio-card .content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.portfolio-page .portfolio-card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Dorong footer ke bawah */
+  padding-top: 15px;
+}
+
+.portfolio-page .portfolio-card .content .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #333;
+  background-color: #f0f0f0; 
+  padding: 3px 10px;         
+  border-radius: 20px;       
+  line-height: 1;            
+  max-width: max-content;    
+}
+
+
+.portfolio-page .portfolio-card .content h3 {
+  margin: 15px 0 10px 0;
+  font-size: 18px;
+}
+
+.portfolio-page .portfolio-card .content p {
+  font-size: 14px;
+  color: #666;
+  flex-grow: 1; /* Biar area deskripsi fleksibel */
+}
+
+.portfolio-page .portfolio-card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* TRIK UTAMA: Dorong footer ke bawah */
+  padding-top: 15px;
+}
+
+.portfolio-page .portfolio-card .card-footer .date {
+  font-size: 12px;
+  color: #888;
+}
+
+.portfolio-page .portfolio-card .card-footer .icons i {
+  margin-left: 10px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.portfolio-page .portfolio-card .card-footer .icons i:hover {
+  color: #1a3e82;
+}
+
+/* === MODAL === */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.modal-tag {
+  display: inline-block;
+  background: #f0f0f0;
+  color: #555;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 28px;
+  color: #1a3e82;
+  text-align: left;
+}
+
+.modal-content h3 {
+  font-size: 22px;
+  margin: 5px 0 10px 0;
+  text-align: left;
+}
+
+.modal-content h4 {
+  font-size: 16px;
+  margin: 20px 0 10px 0;
+  color: #333;
+}
+
+.modal-content p {
+  line-height: 1.8;
+  font-size: 15px;
+  text-align: justify;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Pastel badge per tech */
+.tech-stack .tech {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tech.react {
+  background: #f5f8ff;
+  color: #3578e5;
+}
+
+.tech.node {
+  background: #e6f7ec;
+  color: #28a745;
+}
+
+.tech.mongo {
+  background: #e0f2f1;
+  color: #00bfa5;
+}
+
+.tech.express {
+  background: #eee;
+  color: #666;
+}
+
+.tech.aws {
+  background: #e8ecf8;
+  color: #1a3e82;
+}
+
+.modal-btn {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0; /* Tengah */
+  background: linear-gradient(135deg, #1a3e82, #0e2d5e);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.modal-content {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 22px;
+  }
+
+  .modal-content h3 {
+    font-size: 18px;
+  }
+
+  .modal-content h4 {
+    font-size: 14px;
+  }
+
+  .modal-content p {
+    font-size: 14px;
+  }
+
+  .tech-stack .tech {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+}
+
+
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .portfolio-page .portofolio-hero {
+    height: 220px;
+  }
+
+  .portfolio-page .portofolio-hero .hero-overlay-text h1 {
+    font-size: 26px;
+  }
+
+  .portfolio-page .portofolio-hero .hero-overlay-text p {
+    font-size: 14px;
+  }
+
+  .portfolio-page .portfolio-container {
+    padding: 30px 5%;
+  }
+
+  .portfolio-page .search-box input[type="text"] {
+    width: 100%;
+  }
+}

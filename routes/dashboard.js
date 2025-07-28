@@ -1,7 +1,7 @@
 // routes/dashboard.js
 const express = require('express');
 const router = express.Router();
-const dashboardController = require('../controllers/dashboardController');
+const dashboardController = require('../controllers/dashboard/dashboardController');
 const authMiddleware = require('../middleware/auth'); // cek login session
 const roleMiddleware = require('../middleware/role');
 
@@ -13,6 +13,6 @@ function ensureCaptchaVerified(req, res, next) {
     res.redirect('/verify-recaptcha');
   }
   
-router.get('/dashboard', ensureCaptchaVerified, roleMiddleware.isAdmin, authMiddleware, dashboardController.index);
+router.get('', ensureCaptchaVerified, roleMiddleware.isAdmin, authMiddleware, dashboardController.index);
 
 module.exports = router;

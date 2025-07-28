@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const homeController = require('../controllers/homeController');
+const homeController = require('../controllers/dashboard/homeController');
 const multer = require('multer');
 const path = require('path');
 
 const upload = multer({
   storage: multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'public/storage/files/banner'),
+    destination: (req, file, cb) => cb(null, 'public/dashboard/storage/files/banner'),
     filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
   }),
   limits: { fileSize: 2 * 1024 * 1024 }, // max 2MB
@@ -25,7 +25,7 @@ router.post('/update/:id', (req, res, next) => {
     if (err) {
       req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
       req.flash('old', req.body);
-      return res.redirect('/home');
+      return res.redirect('/dashboard/home');
     }
     next();
   });

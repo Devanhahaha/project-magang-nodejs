@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const newsController = require('../controllers/newsController');
+const newsController = require('../controllers/dashboard/newsController');
 const upload = require('../middleware/multer');
 
 router.get('/', newsController.index);
@@ -10,7 +10,7 @@ router.post('/store', (req, res, next) => {
       if (err) {
         req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
         req.flash('old', req.body);
-        return res.redirect('/news');
+        return res.redirect('/dashboard/news');
       }
       next();
     });
@@ -21,7 +21,7 @@ router.post('/update/:id', (req, res, next) => {
       if (err) {
         req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
         req.flash('old', req.body);
-        return res.redirect('/news');
+        return res.redirect('/dashboard/news');
       }
       next();
     });

@@ -14,3 +14,5 @@ module.exports = (to, subject, text) => {
     to, subject, text
   });
 };
+
+module.exports = transporter;

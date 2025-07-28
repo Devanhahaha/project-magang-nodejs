@@ -1,0 +1,192 @@
+/* ===== RESET DAN DASAR ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== HEADER ===== */
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4%;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  height: 80px;
+  background-color: transparent; /* default transparan */
+}
+
+/* Saat scroll */
+header.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header.scrolled nav a {
+  color: #000; /* Saat scroll: hitam */
+}
+
+header img.logo {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  display: flex;
+  gap: 2rem;
+  margin-left: 40%;
+}
+
+nav a {
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Saat scroll ubah warna jadi hitam */
+header.scrolled nav a {
+  color: #000;
+}
+
+nav a:hover {
+  color: #f6cb1d;
+}
+
+/* ===== CTA BUTTON ===== */
+.cta-button {
+  background-color: #f6cb1d;
+  color: #002E5A;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.cta-button:hover {
+  background-color: #e0b800;
+}
+
+  
+
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: #00357a;
+  color: white;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  margin-top: 10%;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-left, .footer-center, .footer-right {
+  flex: 1 1 250px;
+}
+
+.footer-logo {
+  width: 60px;
+  height: 50px;
+  margin-bottom: 1rem;
+  border-radius: 38%; /* Membulatkan gambar */
+  background-color: white; /* Background di balik gambar */
+  padding: 10px; /* Spasi antara gambar dan background */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* (Opsional) bayangan agar terlihat timbul */
+}
+
+
+.footer-left p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.footer-center h3, .footer-right h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center li {
+  margin-bottom: 0.5rem;
+}
+.footer-center {
+  margin-left: 90px;
+}
+
+.footer-right p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: white; /* Warna background icon */
+  color: #00357a; 
+  border-radius: 50%; 
+  margin-right: 10px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: #007bff; 
+  color: white; 
+}
+
+.language-switcher {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.language-switcher a {
+  color: #fff;
+  margin: 0 5px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.3);
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+}
+

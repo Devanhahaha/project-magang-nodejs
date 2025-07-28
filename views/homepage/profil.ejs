@@ -1,0 +1,129 @@
+<%- include('partials/header') %>
+
+<section class="section-header" data-aos="fade-down">
+  <img src="/dashboard/storage/files/about/<%= abouts.image %>" alt="Tim PST">
+</section>
+
+<section class="about-our-company-new" data-aos="fade-up">
+  <div class="about-container">
+    <!-- KIRI -->
+    <div class="about-left-card">
+      <div class="about-item">
+        <img src="/homepage/images/Think.png" alt="Vision Icon" data-aos="zoom-in">
+        <div>
+          <h3 data-aos="fade-up-right">VISION</h3>
+          <p data-aos="fade-up-right"><%- abouts.vision %></p>
+        </div>
+      </div>
+      <div class="about-item">
+        <img src="/homepage/images/Rocket.png" alt="Mission Icon" data-aos="zoom-in">
+        <div>
+          <h3 data-aos="fade-up-right">MISSION</h3>
+          <p data-aos="fade-up-right"><%- abouts.mission %></p>
+        </div>
+      </div>
+      <div class="about-item">
+        <img src="/homepage/images/calender.png" alt="Work Progress Icon" data-aos="zoom-in">
+        <div>
+          <h3 data-aos="fade-up-right">Work Progres</h3>
+          <p data-aos="fade-up-right">Pemerintahan, Perusahaan Swasta dan Individu</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KANAN -->
+    <div class="about-right-text">
+      <h2 data-aos="fade-up-left">Selamat Datang di Agensi Kami</h2>
+      <p data-aos="fade-up-left">Ramah Teknologi bertekad untuk menjadi sebuah sentra website solution dengan Kualifikasi dan Kompetensi Internasional dalam komitmen membangun teknologi untuk peradaban serta berorientasi menjadi media digital secara profesional.</p>
+
+      <h2 data-aos="fade-up-left">Mengenai Team Kami</h2>
+      <p data-aos="fade-up-left"><%- abouts.description %></p>
+    </div>
+  </div>
+</section>
+
+
+<section class="direksi-section" data-aos="fade-up">
+  <div class="direksi-title">
+    <h2>Direksi Perusahaan</h2>
+    <div class="line-decoration">
+      <span class="line-orange"></span>
+      <span class="line-blue"></span>
+    </div>
+  </div>
+
+ <div class="direksi-wrapper">
+
+  <div class="direksi-background-orange"></div>
+
+  <div class="direksi-photo" data-aos="zoom-in-down">
+    <img src="/homepage/images/feby.jpg" alt="Feby Ali Dzuhri">
+  </div>
+
+  <div class="direksi-box">
+    <div class="direksi-card-white" data-aos="fade-left">
+      <p><strong>Feby Ali Dzuhri, S.Si.kom</strong><br>CEO & Direktur Utama</p>
+    </div>
+    <div class="direksi-card-blue" data-aos="fade-left">
+      <h3>President Speech</h3>
+      <p>Ramah Teknologi bertekad untuk menjadi sebuah sentra website solution dengan kualifikasi dan kompetensi Internasional</p>
+      <p>Dalam komitmen membangun teknologi untuk peradaban serta berorientasi menjadi media digital secara profesional.</p>
+      <div class="quote-footer">
+        <strong>Feby Ali Dzuhri, S.Si.kom</strong>
+        <span class="quote-icon">”</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<!-- OUR TEAM -->
+<section class="team-section" data-aos="fade-up">
+  <div class="container">
+    <h2 class="team-main-title">Our Team</h2>
+    <div class="line-decoration">
+      <span class="line-orange"></span>
+      <span class="line-blue"></span>
+    </div>
+
+    <div class="team-container">
+      <!-- TEKS TIM -->
+      <div class="team-description">
+        <h2 class="section-title">Tim Profesional di Balik Setiap Solusi</h2>
+        <p>Inilah sosok-sosok andal yang menjadi kekuatan utama di balik kesuksesan setiap proyek kami. <strong>Tim CV Ramah Teknologi</strong> terdiri dari para profesional yang berpengalaman, kreatif, dan memiliki keahlian tinggi di bidangnya masing-masing—mulai dari pengembangan website dan aplikasi mobile, solusi jaringan (networking), hingga strategi periklanan digital dan penyelenggaraan event.</p>
+        
+        <p>Dengan perpaduan antara keahlian teknis dan pemahaman mendalam terhadap kebutuhan industri modern, kami selalu berkomitmen untuk menghadirkan solusi yang inovatif, efektif, dan tepat sasaran. Kolaborasi yang solid, pemikiran strategis, serta dedikasi tinggi menjadi fondasi utama dalam setiap layanan yang kami berikan.</p>
+        
+        <p>Di era digital yang terus berkembang pesat, kehadiran solusi teknologi yang tepat bukan lagi pilihan, melainkan kebutuhan. <strong>CV Ramah Teknologi</strong> hadir untuk menjadi mitra terpercaya Anda dalam membangun sistem digital yang unggul—baik untuk kebutuhan bisnis, institusi, maupun personal.</p>
+        
+        <p><em>Percayakan kebutuhan teknologi Anda kepada kami. Bersama CV Ramah Teknologi, wujudkan ide menjadi solusi nyata.</em></p>
+      </div>
+
+      <!-- SLIDER TIM -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="/homepage/images/team.png" alt="Team Member 1"></div>
+          <div class="swiper-slide"><img src="/homepage/images/team1.png" alt="Team Member 2"></div>
+          <div class="swiper-slide"><img src="/homepage/images/team2.png" alt="Team Member 3"></div>
+          <div class="swiper-slide"><img src="/homepage/images/team3.png" alt="Team Member 4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Tambahkan Swiper JS sebelum tag </body> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    spaceBetween: -350,
+    loop: true
+  });
+</script>

@@ -1,7 +1,7 @@
 // routes/calendar.js
 const express = require('express');
 const router = express.Router();
-const calendarController = require('../controllers/calendarController');
+const calendarController = require('../controllers/dashboard/calendarController');
 
 // Add Event
 router.post('/store', calendarController.addEvent);

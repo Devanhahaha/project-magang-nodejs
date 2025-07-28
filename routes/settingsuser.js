@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const settingsUserController = require('../controllers/userpage/settingsUserController');
+const settingsUserController = require('../controllers/dashboard/userpage/settingsUserController');
 const authMiddleware = require('../middleware/auth');
 const multer = require('multer');
 const path = require('path');
 
 const upload = multer({
     storage: multer.diskStorage({
-      destination: (req, file, cb) => cb(null, 'public/storage/files/components'),
+      destination: (req, file, cb) => cb(null, 'public/dashboard/storage/files/components'),
       filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
     }),
     limits: { fileSize: 2 * 1024 * 1024 }, // max 2MB
@@ -26,7 +26,7 @@ router.post('/update/:id', (req, res, next) => {
       if (err) {
         req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
         req.flash('old', req.body);
-        return res.redirect('/settings-user');
+        return res.redirect('/dashboard-user/settings-user');
       }
       next();
     });

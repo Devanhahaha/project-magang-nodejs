@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+
+/* Hero Section */
+.services-hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #ffffff, #f2f6fb);
+  text-align: center;
+}
+
+.services-hero-img {
+  position: relative;
+}
+
+.services-hero-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+/* Overlay Text */
+.hero-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: #002e5a;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero-overlay-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.hero-overlay-text .our {
+  color: #002e5a;
+  font-weight: 900;
+  font-size: 2.6rem;
+  text-shadow: 2px 2px 0 #ffffff, 4px 4px 0 #ccc;
+}
+
+.hero-overlay-text .services-3d {
+  font-weight: 900;
+  color: #f3c342;
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  text-shadow:
+    2px 2px 0 #002e5a,
+    4px 4px 0 #fff;
+}
+
+.hero-overlay-text p {
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+
+.services-hero-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* Services List */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-box {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  padding: 2rem;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-box h3 {
+  font-size: 1.5rem;
+  font-family: 'Protest Guerrilla', cursive;
+  margin-bottom: 0.5rem;
+}
+
+.service-box .pst {
+  color: #002e5a;
+  font-weight: bold;
+}
+
+.service-box .gold {
+  color: #f3c342;
+  font-weight: bold;
+}
+
+.service-box .desc {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.animated-box {
+  position: relative;
+  border-radius: 20px;
+  background: #fff;
+  padding: 2rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.animated-box::before,
+.animated-box::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.animated-box::before {
+  background: linear-gradient(135deg, #f09809, #28057b, #3a0ca3, #4373ee, #f0e04c);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+  opacity: 0;
+}
+
+.animated-box::after {
+  background: #fff;
+  z-index: -2;
+}
+
+/* Hover effect */
+.animated-box:hover {
+  transform: translateY(-8px);
+}
+
+.animated-box:hover::before {
+  opacity: 1;
+}
+
+/* Optional: glowing border only on corners */
+.animated-box::before {
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  padding: 8px;
+}
+
+/* Animate the gradient */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* CTA Contact */
+.contact-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  gap: 2rem;
+  background: #f9fafb;
+}
+
+.cta-image img {
+  max-width: 250px;
+}
+
+.cta-content {
+  max-width: 500px;
+}
+
+.cta-content h2 {
+  font-size: 2rem;
+  color: #002e5a;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  line-height: 1.6;
+}
+
+.cta-button1 {
+  display: inline-block;
+  background: #fac105;
+  color: #ffffff;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-top: 12px;
+}
+
+.cta-button1:hover {
+  background: #bc9a1e;
+}
+
+/* WhatsApp Floating Button */
+.wa-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  font-size: 1.8rem;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: background-color 0.3s;
+}
+
+.wa-float:hover {
+  background: #1ebc5f;
+}
+
+.wa-float i {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,111 @@
+/* === DETAIL BERITA PAGE === */
+.news-detail-page .container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Konten 2 bagian, sidebar 1 bagian */
+  gap: 40px;
+  max-width: 1200px;
+  margin: 150px auto 50px;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+}
+
+.news-detail-page .breadcrumb {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.news-detail-page .breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.news-detail-page .breadcrumb span {
+  color: #555;
+}
+
+.news-detail-page h1 {
+  margin: 0 0 10px;
+}
+
+.news-detail-page .meta {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.news-detail-page .meta .category {
+  background: #007bff;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.news-detail-page .main-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.news-detail-page .content {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.news-detail-page .share {
+  margin-top: 40px;
+}
+
+.news-detail-page .share a {
+  margin-right: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.news-detail-page .back-btn {
+  margin-top: 40px;
+}
+
+.news-detail-page .back-btn a {
+  padding: 8px 15px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.news-detail-page .sidebar {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.news-detail-page .sidebar h3 {
+  margin-top: 0;
+}
+
+.news-detail-page .sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.news-detail-page .sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.news-detail-page .sidebar ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+@media (max-width: 992px) {
+  .news-detail-page .container {
+    grid-template-columns: 1fr;
+  }
+
+  .news-detail-page .sidebar {
+    margin-top: 50px;
+  }
+}

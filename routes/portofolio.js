@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const portofolioController = require('../controllers/portofolioController');
+const portofolioController = require('../controllers/dashboard/portofolioController');
 
 // Setup multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/storage/files/portofolio');
+    cb(null, 'public/dashboard/storage/files/portofolio');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -31,7 +31,7 @@ router.post('/store', (req, res, next) => {
     if (err) {
       req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
       req.flash('old', req.body);
-      return res.redirect('/portofolio');
+      return res.redirect('/dashboard/portofolio');
     }
     next();
   });
@@ -42,7 +42,7 @@ router.post('/update/:id', (req, res, next) => {
     if (err) {
       req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
       req.flash('old', req.body);
-      return res.redirect('/portofolio');
+      return res.redirect('/dashboard/portofolio');
     }
     next();
   });

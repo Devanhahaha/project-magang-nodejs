@@ -2,10 +2,12 @@ const express = require('express');
 const app = express();
 const session = require('express-session');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+const checkRememberedUser = require('./middleware/checkRememberedUser');
 
 require('dotenv').config();
-require('./models/associations');
-const Component = require('./models/Component');
+require('./models/dashboard/associations');
+const Component = require('./models/dashboard/Component');
 app.use(async (req, res, next) => {
   const components = await Component.findOne();
   res.locals.components = components;
@@ -27,6 +29,7 @@ const newsUserRoutes = require('./routes/newsuser');
 const settingsUserRoutes = require('./routes/settingsuser');
 const profileUserRoutes = require('./routes/profileuser');
 const calendarRoutes = require('./routes/calendar');
+const mainRoutes = require('./routes/homepage/index');
 
 const sequelize = require('./config/database');
 const expressLayouts = require('express-ejs-layouts');
@@ -38,6 +41,7 @@ app.use(express.json());
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/aos', express.static(__dirname + '/node_modules/aos'));
 app.use('/storage', express.static(path.join(__dirname, 'public/storage')));
 
 // View Engine Setup
@@ -46,7 +50,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // EJS Layouts Setup
 app.use(expressLayouts);
-app.set('layout', 'layouts/main'); // default layout
+app.set('layout', 'dashboard/layouts/main'); // default layout
+
 
 // Session dan Flash
 app.use(session({
@@ -55,6 +60,10 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(flash());
+
+
+app.use(cookieParser());
+app.use(checkRememberedUser);
 
 // 🔥 GLOBAL FLASH Middleware (penting untuk SweetAlert bekerja!)
 app.use((req, res, next) => {
@@ -65,48 +74,48 @@ app.use((req, res, next) => {
   next();
 });
 
-// Auth Middleware untuk halaman yang butuh login
-const authMiddleware = require('./middleware/auth');
-app.use('/dashboard', authMiddleware);
-app.use('/dashboard-user', authMiddleware);
-app.use('/home', authMiddleware);
-app.use('/services', authMiddleware);
-app.use('/news', authMiddleware);
-app.use('/news-user', authMiddleware);
-app.use('/portfolio', authMiddleware);
-app.use('/about', authMiddleware);
-app.use('/profile', authMiddleware);
-app.use('/settings', authMiddleware);
-app.use('/settings-user', authMiddleware);
-app.use('/profile-user', authMiddleware);
-app.use('/calendar', authMiddleware);
-
-// Global Middleware lainnya
 // Global Middleware lainnya
 app.use((req, res, next) => {
   res.locals.title = 'Default Title';
   res.locals.appName = 'CV Ramah Teknologi';
-  res.locals.currentRoute = req.path.split('/')[1] || 'news';
-  // console.log('🌟 SESSION USER:', req.session.user);
+  res.locals.currentRoute = req.path;
   res.locals.user = req.session.user || null;
   next();
 });
 
+app.use('/', mainRoutes);
+
+// Auth Middleware untuk halaman yang butuh login
+const authMiddleware = require('./middleware/auth');
+app.use('/dashboard', authMiddleware);
+app.use('/dashboard-user', authMiddleware);
+app.use('/dashboard/home', authMiddleware);
+app.use('/dashboard/services', authMiddleware);
+app.use('/dashboard/news', authMiddleware);
+app.use('/dashboard-user/news-user', authMiddleware);
+app.use('/dashboard/portfolio', authMiddleware);
+app.use('/dashboard/about', authMiddleware);
+app.use('/dashboard/profile', authMiddleware);
+app.use('/dashboard/settings', authMiddleware);
+app.use('/dashboard-user/settings-user', authMiddleware);
+app.use('/dashboard-user/profile-user', authMiddleware);
+app.use('/calendar', authMiddleware);
+
 // Routes
 app.use('/', authRoutes);
 app.use('/', resetpasswordRoutes);
-app.use('/', dashboardRoutes);
+app.use('/dashboard', dashboardRoutes);
 app.use('/dashboard-user', dashboardUserRoutes);
-app.use('/home', homeRoutes);
-app.use('/about', aboutRoutes);
-app.use('/profile', profileRoutes);
-app.use('/profile-user', profileUserRoutes);
-app.use('/settings', settingsRoutes);
-app.use('/settings-user', settingsUserRoutes);
-app.use('/services', servicesRoutes);
-app.use('/news', newsRoutes);
-app.use('/news-user', newsUserRoutes);
-app.use('/portofolio', portofolioRoutes);
+app.use('/dashboard/home', homeRoutes);
+app.use('/dashboard/about', aboutRoutes);
+app.use('/dashboard/profile', profileRoutes);
+app.use('/dashboard-user/profile-user', profileUserRoutes);
+app.use('/dashboard/settings', settingsRoutes);
+app.use('/dashboard-user/settings-user', settingsUserRoutes);
+app.use('/dashboard/services', servicesRoutes);
+app.use('/dashboard/news', newsRoutes);
+app.use('/dashboard-user/news-user', newsUserRoutes);
+app.use('/dashboard/portofolio', portofolioRoutes);
 app.use('/calendar', calendarRoutes);
 
 // Database Connection & Start Server

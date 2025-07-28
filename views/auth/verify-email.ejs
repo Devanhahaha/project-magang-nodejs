@@ -6,38 +6,40 @@
   <title>Verify Email | <%= appName %></title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/admin/assets/img/logo/pst-logo.png" />
+  <link rel="icon" type="image/x-icon" href="/dashboard/admin/assets/img/logo/pst-logo.png" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="/admin/assets/vendor/fonts/fontawesome.css" />
-  <link rel="stylesheet" href="/admin/assets/vendor/fonts/tabler-icons.css" />
-  <link rel="stylesheet" href="/admin/assets/vendor/fonts/flag-icons.css" />
+  <link rel="stylesheet" href="/dashboard/admin/assets/vendor/fonts/fontawesome.css" />
+  <link rel="stylesheet" href="/dashboard/admin/assets/vendor/fonts/tabler-icons.css" />
+  <link rel="stylesheet" href="/dashboard/admin/assets/vendor/fonts/flag-icons.css" />
 
   <!-- Core CSS -->
-  <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/core.css" />
-  <link rel="stylesheet" href="/admin/assets/vendor/css/rtl/theme-default.css" />
-  <link rel="stylesheet" href="/admin/assets/css/demo.css" />
-  <link rel="stylesheet" href="/admin/assets/vendor/css/pages/page-auth.css" />
+  <link rel="stylesheet" href="/dashboard/admin/assets/vendor/css/rtl/core.css" />
+  <link rel="stylesheet" href="/dashboard/admin/assets/vendor/css/rtl/theme-default.css" />
+  <link rel="stylesheet" href="/dashboard/admin/assets/css/demo.css" />
+  <link rel="stylesheet" href="/dashboard/admin/assets/vendor/css/pages/page-auth.css" />
 
   <!-- JS -->
-  <script src="/admin/assets/vendor/js/helpers.js"></script>
-  <script src="/admin/assets/vendor/js/template-customizer.js"></script>
+  <script src="/dashboard/admin/assets/vendor/js/helpers.js"></script>
+  <script src="/dashboard/admin/assets/vendor/js/template-customizer.js"></script>
 </head>
 <body>
   <div class="authentication-wrapper authentication-cover">
-    <a href="/" class="app-brand auth-cover-brand">
-      <span class="app-brand-logo demo">
-        <img src="/admin/assets/img/logo/ramah.jpg" width="50" height="50" alt="">
+    <a href="/register" class="app-brand auth-cover-brand" style="display: flex; align-items: center; gap: 8px;">
+      <img src="/dashboard/storage/files/components/<%= components?.logo_apk %>" 
+           alt="Logo" 
+           style="max-height: 50px; height: auto; width: auto; object-fit: contain;">
+      <span class="app-brand-text demo text-heading fw-bold">
+          <%= components?.nama_apk || 'Aplikasi' %>
       </span>
-      <span class="app-brand-text demo text-heading fw-bold">RamahTech</span>
-    </a>
+    </a> 
 
     <div class="authentication-inner row m-0">
       <div class="d-none d-lg-flex col-lg-8 p-0">
         <div class="auth-cover-bg d-flex justify-content-center align-items-center">
-          <img src="/admin/assets/img/illustrations/auth-verify-email-illustration-light.png" class="my-5 auth-illustration" />
-          <img src="/admin/assets/img/illustrations/bg-shape-image-light.png" class="platform-bg" />
+          <img src="/dashboard/admin/assets/img/illustrations/auth-verify-email-illustration-light.png" class="my-5 auth-illustration" />
+          <img src="/dashboard/admin/assets/img/illustrations/bg-shape-image-light.png" class="platform-bg" />
         </div>
       </div>
 
@@ -57,8 +59,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="/admin/assets/vendor/js/core.js"></script>
-  <script src="/admin/assets/js/main.js"></script>
+  <script src="/dashboard/admin/assets/vendor/js/core.js"></script>
+  <script src="/dashboard/admin/assets/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <% if (success) { %>

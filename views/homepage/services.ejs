@@ -1,0 +1,69 @@
+<%- include('partials/header') %>
+
+<!-- Hero Section -->
+<section class="services-hero">
+  <div class="services-hero-img" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
+    <img src="/homepage/images/icon service.jpeg" alt="Our Services">
+    <div class="hero-overlay-text">
+      <h1  data-aos="zoom-in"><span class="our">OUR</span> <span class="services-3d">SERVICES</span></h1>
+      <p  data-aos="zoom-in">LAYANAN YANG KAMI SEDIAKAN <br> SEBAGAI SOLUSI KEBUTUHAN ANDA</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Services List -->
+<section class="services-list">
+  <% services.forEach(service => { %>
+    <div class="service-box animated-box" data-aos="fade-up">
+      <h3><span class="pst">Ramahtech</span> <span class="gold"><%= service.title %></span></h3>
+      <p class="desc"><%= service.subtitle %></p>
+      <p><%= service.description %></p>
+    </div> 
+  <% }) %>
+
+  <!-- <div class="service-box animated-box" data-aos="fade-up" data-aos-delay="100">
+    <h3><span class="pst">Ramahtech</span> <span class="gold">Mobile</span></h3>
+    <p class="desc">Professional Mobile Development</p>
+    <p>Kami mengembangkan aplikasi mobile berbasis Android/iOS sesuai kebutuhan bisnis Anda. Solusi mobile kami meningkatkan efisiensi operasional dan mendekatkan bisnis Anda dengan pelanggan.</p>
+  </div>
+
+  <div class="service-box animated-box" data-aos="fade-up" data-aos-delay="200">
+    <h3><span class="pst">Ramahtech</span> <span class="gold">COMPUTER NETWORK</span></h3>
+    <p class="desc">Professional IT Infrastructure & Networking</p>
+    <p>Kami menyediakan instalasi dan pengelolaan jaringan komputer yang handal dan aman untuk mendukung sistem informasi internal, database, dan layanan cloud bisnis Anda.</p>
+  </div>
+
+  <div class="service-box animated-box" data-aos="fade-down-right" data-aos-delay="300">
+    <h3><span class="pst">Ramahtech</span> <span class="gold">ADVERTISING</span></h3>
+    <p class="desc">Facebook Ads | Google Ads | Billboard | dll</p>
+    <p>Kami menyediakan layanan periklanan digital & konvensional untuk meningkatkan visibilitas dan brand Anda secara efektif sesuai target sasaran.</p>
+  </div>
+
+  <div class="service-box animated-box" data-aos="fade-down-left" data-aos-delay="400">
+    <h3><span class="pst">Ramahtech</span> <span class="gold">EVENT ORGANIZER</span></h3>
+    <p class="desc">Exhibition | Seminar | Anniversary | dll</p>
+    <p>Kami menyediakan layanan EO untuk berbagai acara perusahaan, talkshow, seminar, pameran, ulang tahun, dengan tim profesional yang siap mendukung keberhasilan acara Anda.</p>
+  </div> -->
+</section>
+
+<!-- CTA WhatsApp Section -->
+<section class="contact-cta" data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+  <div class="cta-image">
+    <img src="/homepage/images/orang.png" alt="Contact Illustration">
+  </div>
+  <div class="cta-content">
+    <h2>Tertarik Menggunakan Produk <br/>Atau Layanan Kami?</h2>
+    <p>Dapatkan kemudahan efisien dengan menggunakan produk atau layanan kami! Klik tombol di bawah ini untuk informasi lebih lanjut!</p>
+    <a href="https://wa.me/6281234567890" target="_blank" class="cta-button1">Hubungi Kami</a>
+  </div>
+</section>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>

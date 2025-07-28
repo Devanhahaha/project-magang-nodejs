@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
-const verifyEmailController = require('../controllers/verifyEmailController');
+const authController = require('../controllers/dashboard/authController');
+const verifyEmailController = require('../controllers/dashboard/verifyEmailController');
+const checkRememberedUser = require('../middleware/checkRememberedUser');
 const rateLimit = require('express-rate-limit');
 
 const loginLimiter = rateLimit({
@@ -33,7 +34,7 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/login', authController.showLogin);
-router.post('/authentication', loginLimiter, authController.validateLogin, authController.authenticate);
+router.post('/authentication', checkRememberedUser, loginLimiter, authController.validateLogin, authController.authenticate);
 router.post('/register-authentication', authController.register);
 router.get('/logout', authController.logout);
 

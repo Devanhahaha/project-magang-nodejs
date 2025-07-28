@@ -1,0 +1,129 @@
+<%- include('partials/header') %>
+
+<!-- Hero Section -->
+  <section class="hero" data-aos="fade-down" style="background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.7)), 
+    url('/dashboard/storage/files/banner/<%= homes.banner %>') center/cover no-repeat;">
+    <div class="hero-content">
+      <h1 data-aos="zoom-in-up"><%= homes?.title || '-' %></h1>
+      <p data-aos="zoom-in-up"><%- homes?.subtitle || '-' %></p>
+      <div class="hero-buttons">
+        <a href="#profil" class="btn btn-primary"  data-aos="fade-up-right">Tentang Kami</a>
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-secondary"  data-aos="fade-up-left">Hubungi Kami</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="advantages" class="advantages" data-aos="fade-up">
+  <div class="advantages-wrapper">
+    <div class="advantages-text">
+      <p class="subtitle" data-aos="zoom-in-up">AREA BISNIS KAMI</p>
+      <h2 data-aos="zoom-in-up">Keunggulan dalam <span class="gold" data-aos="zoom-in-up">Pelayanan</span></h2>
+      <p class="description" data-aos="fade-up" data-aos-duration="1000">
+        Kami adalah pemimpin dalam menyediakan layanan konsultasi dengan seperangkat teknologi mutakhir
+        dan tim profesional yang berpengalaman dan terkenal. Ini adalah beberapa opsi yang bisa Anda sewa.
+      </p>
+    </div>
+
+    <div class="advantages-cards">
+      <div class="advantage-card" data-aos="flip-left">
+        <div class="icon"><i class="fas fa-sitemap"></i></div>
+        <h3>Smart Government</h3>
+        <p>Pemerintahan cerdas merupakan gebrakan baru yang menjadi inisiatif Ramah Teknologi untuk mempermudah interaksi.</p>
+      </div>
+      <div class="advantage-card" data-aos="flip-left">
+        <div class="icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Cyber Campus</h3>
+        <p>Salah satu bentuk inovasi Ramah Teknologi dalam pengembangan administrasi kampus lebih dinamis.</p>
+      </div>
+      <div class="advantage-card" data-aos="flip-left">
+        <div class="icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Cyber School</h3>
+        <p>Dukungan pendidikan yang terus meningkat seiring perkembangan waktu dan zaman ialah cyber school.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Services Section -->
+<section id="services" class="services">
+  <div class="services-heading">
+    <img src="/homepage/images/line.png" alt="line top" class="line-top" data-aos="fade-right">
+    <h2 data-aos="zoom-in">Our Services</h2>
+    <img src="/homepage/images/line 2.png" alt="line bottom" class="line-bottom" data-aos="fade-left">
+  </div>
+
+  <div class="service-cards">
+    <% services.forEach(service => { %>
+      <div class="card" data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000">
+      <div class="logo">
+        <span class="ramah">Ramahtech</span> <span class="web"><%= service.title %></span>
+      </div>
+      <p class="subline"><%= service.subtitle %></p>
+      <p class="desc">
+        <%- service.description %>
+      </p>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+  <!-- Clients Section -->
+  <section id="clients" class="clients">
+  <div class="services-heading">
+    <img src="/homepage/images/line.png" alt="line top" class="line-top" data-aos="fade-right">
+    <h2 data-aos="zoom-in">Klien Kami</h2>
+    <img src="/homepage/images/line 2.png" alt="line bottom" class="line-bottom" data-aos="fade-left">
+  </div>
+
+  <div class="clients-wrapper">
+    <div class="client-card yellow" data-aos="zoom-out">
+      <img src="/homepage/images/gemah ripah.png" alt="Klinik Rumah">
+      <div class="client-info">
+        <h3>Klinik Rumah</h3>
+        <p>Disperkim Jabar</p>
+      </div>
+    </div>
+
+    <div class="client-card blue" data-aos="zoom-out">
+      <img src="/homepage/images/Distrakim.png" alt="Perkimseru">
+      <div class="client-info">
+        <h3>Perkimseru</h3>
+        <p>Distrakim Puwakarta</p>
+      </div>
+    </div>
+
+    <div class="client-card yellow" data-aos="zoom-out">
+      <img src="/homepage/images/PEPB.png" alt="Perkimseru">
+      <div class="client-info">
+        <h3>Factsage Software</h3>
+        <p>PEPB Bandung</p>
+      </div>
+    </div>
+
+    <div class="client-card yellow"data-aos="zoom-out">
+      <img src="/homepage/images/Distrakim.png" alt="Perkimseru">
+      <div class="client-info">
+        <h3>Sisperkim</h3>
+        <p>Distrakim Puwakarta</p>
+      </div>
+    </div>
+
+    <div class="client-card blue" data-aos="zoom-out">
+      <img src="/homepage/images/dpmptsp.png" alt="Perkimseru">
+      <div class="client-info">
+        <h3>Investasi</h3>
+        <p>DPMPTSP</p>
+      </div>
+    </div>
+
+    <div class="client-card yellow"data-aos="zoom-out">
+      <img src="/homepage/images/pt.png" alt="Perkimseru">
+      <div class="client-info">
+        <h3>QR Code Label Produk</h3>
+        <p>PT Mitoku Rubber Indonesia</p>
+      </div>
+    </div>
+  </div>
+</section>

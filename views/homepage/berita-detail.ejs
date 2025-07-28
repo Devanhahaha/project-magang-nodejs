@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+
+<main class="news-detail-page">
+  <div class="container">
+    <article class="main-content">
+      <nav class="breadcrumb">
+        <a href="/">Beranda</a> &raquo;
+        <a href="/news">Berita</a> &raquo;
+        <span><%= berita.title %></span>
+      </nav>
+
+      <h1><%= berita.title %></h1>
+      <div class="meta">
+        <span><%= berita.tanggal %></span> |
+        <span><%= berita.createdAt %></span> |
+        <span class="category"><%= berita.category %></span>
+      </div>
+
+      <img src="/dashboard/storage/files/news/<%= berita.image %>" alt="Detail Image" class="main-image">
+
+      <div class="content">
+        <%- berita.description %>
+      </div>
+
+      <div class="share">
+        <h4>Bagikan:</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+      </div>
+
+      <div class="back-btn">
+        <a href="/news">&#8592; Kembali ke Berita</a>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <h3>Kategori</h3>
+      <ul>
+        <li><a href="#">Teknologi</a></li>
+        <li><a href="#">Bisnis</a></li>
+        <li><a href="#">Event</a></li>
+      </ul>
+    </aside>
+  </div>
+</main>

@@ -5,7 +5,7 @@ const path = require('path');
 // Konfigurasi Storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/storage/files/news');
+    cb(null, 'public/dashboard/storage/files/news');
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);

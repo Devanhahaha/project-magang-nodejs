@@ -1,0 +1,588 @@
+  /* Global reset improvements */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* About Section */
+  .about-our-company-new {
+    padding: 4rem 1rem;
+    background-color: #fff;
+  }
+
+  .about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-left-card {
+    background-color: #002E5A;
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
+    max-width: 400px;
+  }
+
+  .about-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .about-item h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .about-item p {
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+  }
+
+  .about-right-text {
+    flex: 2 1 500px;
+    max-width: 700px;
+  }
+
+  .about-right-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #002E5A;
+  }
+
+  .about-right-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .about-left-card, .about-right-text {
+      max-width: 100%;
+    }
+  }
+
+  .section-header {
+    width: 100vw; /* full viewport width */
+    overflow: hidden; /* cegah meluber */
+  }  
+
+  /* Visi Misi Section */
+  .section-header img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }  
+
+  .direksi-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    margin-top: 18%;
+    margin-bottom: -200px;
+  }
+
+  .line-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: 0.5rem;
+    animation: slideLine 3s ease-in-out infinite;
+  }
+
+
+  .line-orange {
+    width: 60px;
+    height: 6px;
+    background-color: orange;
+    border-radius: 3px;
+    animation-delay: 0.3s;
+  }
+
+  .line-blue {
+    width: 40px;
+    height: 6px;
+    background-color: #002E5A;
+    border-radius: 3px;
+    animation-delay: 0.2s;
+  }
+
+
+  .direksi-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    flex-wrap: wrap;
+    z-index: 1;
+  }
+
+  .direksi-section {
+    margin-bottom: 7%;
+  }
+
+
+
+  /* Background oranye di belakang foto */
+  .direksi-background-orange {
+    position: absolute;
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 220px;
+    background-color: #f6a800;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 0;
+  }
+
+  /* Gambar berada di atas background oren */
+  .direksi-photo {
+    position: relative;
+    z-index: 2;
+    margin-left: 2rem;
+  }
+
+  .direksi-photo img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Box container */
+  .direksi-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 3;
+  }
+
+  /* Card putih (keluar dari latar oranye) */
+  .direksi-card-white {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 1rem;
+    color: #222;
+    min-width: 100px;
+    margin-left: -100px; /* Tarik ke kiri agar keluar dari background oranye */
+    position: relative;
+    z-index: 3;
+    width: 250px;
+    margin-left: 50px;
+    margin-top: 200px;
+  }
+
+  .direksi-card-blue {
+    background: #003a73;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    min-width: 270px;
+    position: relative;
+    z-index: 2;
+    width: 270px;
+    margin-top: 30px;
+  }
+
+  .direksi-card-blue h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .direksi-card-blue p {
+    font-size: 0.95rem;
+    margin-top: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .quote-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .quote-footer .quote-icon {
+    font-family: serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: bold;
+    transform: translateY(5px); /* sesuaikan agar rata bawah */
+  }
+
+
+  @keyframes slideLine {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+  }
+
+
+
+
+
+
+
+  /* Team Section */
+  /* Reset dan dasar */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f0f4f8;
+  }
+
+  /* === OUR TEAM Swiper Custom === */
+  .team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-description {
+  flex: 1 1 500px;
+  text-align: left;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-right: 10%;
+  width: 90%;
+}
+
+.team-description h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #002E5A;
+}
+
+.team-description p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.team-description em {
+  color: #003a73;
+  font-style: italic;
+}
+
+.team-description strong {
+  color: #f6a800;
+}
+
+/* Atur ulang Swiper agar muat di kolom kanan */
+.swiper-container {
+  flex: 1 1 350px;
+  max-width: 400px;
+  height: 590px;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .swiper-container {
+    margin-left: 0;
+  }
+
+  .team-description {
+    text-align: center;
+  }
+}
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #002E5A;
+  }
+
+  .swiper-wrapper {
+    align-items: center;
+  }
+
+  .swiper-slide {
+    background: #fff;
+    border-radius: 20px;
+    width: 280px;
+    height: 380px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .swiper-slide img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .swiper-slide::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 60%);
+    z-index: 2;
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+    color: white;
+    background: transparent;
+    text-align: left;
+  }
+
+  .card-content h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .card-content p {
+    margin-top: 4px;
+    font-size: 0.9rem;
+  }
+
+
+  /* === Tumpukan kartu (overlap efek) === */
+  .swiper-slide {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+
+  .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 3;
+  }
+
+  .swiper-slide-next,
+  .swiper-slide-prev {
+    opacity: 0.8;
+    transform: scale(0.9);
+    z-index: 2;
+  }
+
+  .swiper-slide-next {
+    transform: scale(0.9) translateX(30px);
+  }
+  .swiper-slide-prev {
+    transform: scale(0.9) translateX(-30px);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .swiper-slide {
+      width: 220px;
+      height: 320px;
+    }
+
+    .card-content h3 {
+      font-size: 1.1rem;
+    }
+
+    .card-content p {
+      font-size: 0.8rem;
+    }
+  }
+
+
+  /* Efek tumpuk/overlap */
+  .swiper-slide {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  .swiper-slide-active {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 3;
+  }
+
+  .swiper-slide-next {
+    transform: scale(0.95) translateX(30px);
+    z-index: 2;
+  }
+
+  .swiper-slide-prev {
+    transform: scale(0.95) translateX(-30px);
+    z-index: 2;
+  }
+
+  .gif-icon {
+    width: 80px;
+    height: 80px;
+    animation: bounce 2s infinite;
+    transform: scaleX(-1); /* NEW: membalik horizontal jika perlu */
+  }
+
+/* Our Team Title Styling */
+.team-main-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #003a73;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.team-section .line-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.team-section .line-orange,
+.team-section .line-blue {
+  height: 5px;
+  border-radius: 2px;
+}
+
+.team-section .line-orange {
+  width: 60px;
+  background-color: #f6a800;
+}
+
+.team-section .line-blue {
+  width: 40px;
+  background-color: #003a73;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .team-description {
+    padding: 1.5rem;
+  }
+
+  .swiper-container {
+    max-width: 100%;
+  }
+
+  .team-main-title {
+    font-size: 2rem;
+  }
+
+  .team-description p {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive Tweaks */
+  @media (max-width: 768px) {
+    .visi-misi-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .team-card {
+      width: 90%;
+      max-width: 300px;
+    }
+  }
+
+  /* animation direction */
+  @media (max-width: 768px) {
+    .direksi-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .direksi-background-orange {
+      display: none; /* sembunyikan untuk tampilan kecil */
+    }
+
+    .direksi-card-white,
+    .direksi-card-blue {
+      margin-left: 0;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .direksi-photo img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+

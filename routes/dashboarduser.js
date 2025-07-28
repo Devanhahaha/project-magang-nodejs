@@ -1,7 +1,7 @@
 // routes/dashboard.js
 const express = require('express');
 const router = express.Router();
-const dashboardUserController = require('../controllers/userpage/dashboardUserController');
+const dashboardUserController = require('../controllers/dashboard/userpage/dashboardUserController');
 const authMiddleware = require('../middleware/auth'); // cek login session
 const roleMiddleware = require('../middleware/role');
 

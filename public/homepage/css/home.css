@@ -1,0 +1,378 @@
+/* Hero */
+.hero {
+  background: linear-gradient(
+    rgba(0, 51, 102, 0.7),
+    rgba(0, 51, 102, 0.7)
+  ),
+  url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+.hero-buttons .btn {
+  display: inline-block;
+  padding: 12px 30px;
+  margin: 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #FFC107;
+  color: #003366;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #FFC107;
+  color: #FFC107;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background-color: #FFD54F;
+  color: #003366;
+}
+
+/* Advantages Section */
+.advantages {
+  background-color: #0d0d12;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.advantages-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advantages-text {
+  margin-bottom: 50px;
+}
+
+.advantages .subtitle {
+  color: #0584c9;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.advantages h2 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+.advantages h2 .gold {
+  background-color: #0891b7;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.advantages .description {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #ccc;
+}
+
+.advantages-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.advantage-card {
+  background-color: #1c1c24;
+  border-radius: 12px;
+  padding: 30px;
+  width: 300px;
+  text-align: left;
+}
+
+.advantage-card .icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #0584c9;
+}
+
+.advantage-card h3 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.advantage-card p {
+  color: #ccc;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .advantages-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+/* Services */
+/* Services Section */
+.services {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.services-heading {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.services-heading h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #002147;
+}
+
+.line-decor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.line-decor .line {
+  height: 5px;
+  border-radius: 2px;
+  margin: 0 5px;
+}
+
+.line-decor .yellow {
+  width: 50px;
+  background: #f5c106;
+}
+
+.line-decor .blue {
+  width: 80px;
+  background: #002147;
+}
+
+.service-cards {
+  display: flex;
+  flex-wrap: nowrap; /* Tidak wrap ke bawah */
+  overflow-x: auto; /* Scroll horizontal */
+  gap: 30px;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory; /* Snap agar rapi */
+}
+
+.service-cards .card {
+  flex: 0 0 320px;   /* Lebar kartu lebih lega */
+  min-height: 360px; /* Tinggi minimum biar rata */
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.08);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 5%;
+}
+
+.service-cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+
+.services {
+  overflow-x: hidden; /* Agar bersih */
+}
+
+.service-cards::-webkit-scrollbar {
+  height: 8px;
+}
+
+.service-cards::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.service-cards::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.card .logo {
+  font-family: 'Protest Guerrilla', sans-serif;
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+.card .logo .ramah {
+  color: #002147; /* biru tua */
+}
+
+.card .logo .web {
+  color: #f5c106; /* kuning */
+}
+
+.card .logo {
+  font-family: 'Protest Guerrilla', sans-serif;
+  font-size: 2rem; /* Lebih besar agar proporsional */
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.card .subline {
+  font-size: 0.85rem;
+  margin: 5px 0 12px;
+  color: #666;
+}
+
+.card h3 {
+  margin: 10px 0 12px;
+  font-size: 1.2rem;
+  color: #002147;
+}
+
+.card .desc {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  flex-grow: 0; /* Isi memenuhi ruang kosong */
+  margin-top: 8px;
+}
+
+.services-heading {
+  position: relative;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.services-heading h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #002147;
+  margin: 20px 0;
+}
+
+.services-heading .line-top,
+.services-heading .line-bottom {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px; /* Sesuaikan ukuran line */
+}
+
+.services-heading .line-top {
+  margin-bottom: 10px;
+}
+
+.services-heading .line-bottom {
+  margin-top: 10px;
+}
+
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* Clients */
+.clients {
+  padding: 80px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.clients-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.client-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px 30px;
+  width: 280px;
+  position: relative;
+  margin-top: 3%;
+}
+
+.client-card::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  width: 50px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.client-card.yellow::before {
+  background: #f5c106; /* kuning */
+  margin-left: 100px;
+}
+
+.client-card.blue::before {
+  background: #002147; /* biru tua */
+  margin-left: 100px;
+}
+
+.client-card img {
+  width: 60px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.client-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+}
+
+.client-info p {
+  margin: 5px 0 0;
+  font-size: 0.85rem;
+  color: #666;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .clients-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
