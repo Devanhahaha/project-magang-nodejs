@@ -3,6 +3,9 @@ const Services = require('../../models/dashboard/Services');
 const About = require('../../models/dashboard/About');
 const Portofolio = require('../../models/dashboard/Portofolio');
 const News = require('../../models/dashboard/News');
+const Visitor = require('../../models/dashboard/Visitor');
+const sequelize = require('../../config/database'); // sesuaikan path-nya
+const { QueryTypes } = require('sequelize');
 
 // const berita = [
 //   {
@@ -35,6 +38,14 @@ exports.home = async (req, res) => {
   try {
     const homes = await Home.findOne({ order: [['createdAt', 'DESC']] });
     const services = await Services.findAll({ order: [['id', 'ASC']] });
+
+    // ✅ Simpan data visitor ke PostgreSQL
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const agent = req.headers['user-agent'];
+    await Visitor.create({
+      ip_address: ip,
+      user_agent: agent
+    });
 
     res.render('homepage/home', {
       title: 'Home',

@@ -210,7 +210,7 @@
           <div class="col-5 text-center text-sm-left">
             <div class="card-body pb-0 px-0 px-md-4">
               <img
-                src="/admin/assets/img/illustrations/card-advance-sale.png"
+                src="/dashboard/admin/assets/img/illustrations/card-advance-sale.png"
                 height="140"
                 alt="view sales"
               />
@@ -229,12 +229,12 @@
               <p class="card-subtitle">Jumlah Pengunjung</p>
             </div>
             <div class="card-body">
-              <div id="profitLastMonth"></div>
+              <canvas id="profitLastMonth"></canvas>
               <div
                 class="d-flex justify-content-between align-items-center mt-3 gap-3"
               >
-                <h4 class="mb-0">624k</h4>
-                <small class="text-success">+8.24%</small>
+                <h4 class="mb-0"><%= totalVisitor %> Pengunjung</h4>
+                <small class="text-success"><%= growth %>%</small>
               </div>
             </div>
           </div>
@@ -242,15 +242,13 @@
         <div class="col-xl-6 col-md-6">
           <div class="card h-100">
             <div class="card-header pb-2">
-              <h5 class="card-title mb-1">82.5k</h5>
-              <p class="card-subtitle">Expenses</p>
+              <h5 class="card-title mb-1"><%= totalVisitor %> Pengunjung</h5>
+              <p class="card-subtitle">Expenses Jumlah Pengunjung</p>
             </div>
             <div class="card-body">
-              <div id="expensesChart"></div>
+              <canvas id="expensesChart"></canvas>
               <div class="mt-3 text-center">
-                <small class="text-muted mt-3"
-                  >$21k Expenses more than last month</small
-                >
+                <small class="text-muted mt-3"><%= growth %>%</small>
               </div>
             </div>
           </div>
@@ -371,7 +369,9 @@
             />
           </div>
           <div class="mb-3">
-            <label for="eventDesc" class="form-label" for="description">Description</label>
+            <label for="eventDesc" class="form-label" for="description"
+              >Description</label
+            >
             <textarea
               class="form-control"
               id="description"
@@ -478,8 +478,13 @@
           </div>
           <div class="mb-3">
             <label class="form-label" for="editDescription">Description</label>
-            <textarea id="editDescription" name="description" class="form-control" required></textarea>
-          </div>                  
+            <textarea
+              id="editDescription"
+              name="description"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Update Event</button>
@@ -710,13 +715,64 @@
 <script src="https://cdn.ckeditor.com/4.22.1/standard-all/ckeditor.js"></script>
 <script>
   // Pasang CKEditor hanya saat modal dibuka
-document.addEventListener('shown.bs.modal', function (e) {
-  const textarea = e.target.querySelector('textarea');
-  if (textarea) {
-    if (CKEDITOR.instances[textarea.id]) {
-      CKEDITOR.instances[textarea.id].destroy(true);
+  document.addEventListener("shown.bs.modal", function (e) {
+    const textarea = e.target.querySelector("textarea");
+    if (textarea) {
+      if (CKEDITOR.instances[textarea.id]) {
+        CKEDITOR.instances[textarea.id].destroy(true);
+      }
+      CKEDITOR.replace(textarea.id);
     }
-    CKEDITOR.replace(textarea.id);
-  }
-});
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctxProfit = document.getElementById('profitLastMonth').getContext('2d');
+  const profitChart = new Chart(ctxProfit, {
+    type: 'line',
+    data: {
+      labels: <%- JSON.stringify(dailyLabels) %>,
+      datasets: [{
+        label: 'Pengunjung',
+        data: <%- JSON.stringify(dailyCounts) %>,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+<script>
+  const ctxExpenses = document.getElementById('expensesChart').getContext('2d');
+  const expensesChart = new Chart(ctxExpenses, {
+    type: 'doughnut',
+    data: {
+      labels: ['Pengunjung', 'Sisa'],
+      datasets: [{
+        data: [<%= totalVisitor %>, <%= 100 - totalVisitor %>],
+        backgroundColor: ['#36A2EB', '#E0E0E0'],
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+        }
+      }
+    }
+  });
 </script>
