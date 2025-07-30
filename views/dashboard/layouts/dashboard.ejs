@@ -1,0 +1,266 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function confirmDelete(id) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const form = document.getElementById("delete-form");
+        form.action = `/calendar/delete/${id}`;
+        form.submit();
+      }
+    });
+  }
+
+  function confirmDeleteClient(id) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const form = document.getElementById("delete-form");
+        form.action = `/client/delete/${id}`;
+        form.submit();
+      }
+    });
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<% if (error) { %>
+<script>
+  Swal.fire({
+    icon: "error",
+    title: "Gagal!",
+    text: "<%= error %>",
+    showConfirmButton: false,
+    timer: 15000,
+  });
+</script>
+<% } %> <% if (success) { %>
+<script>
+  Swal.fire({
+    icon: "success",
+    title: "Berhasil!",
+    text: "<%= success %>",
+    showConfirmButton: false,
+    timer: 15000,
+  });
+</script>
+<% } %>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const calendar = document.getElementById("simpleCalendar");
+    calendar.innerHTML = "";
+
+    try {
+      const res = await fetch("/calendar/all");
+      const events = await res.json();
+
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        calendar.innerHTML += `<div></div>`;
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+          day
+        ).padStart(2, "0")}`;
+        const dayEvents = events.filter((e) => {
+          const eventDate = new Date(e.start_date).toLocaleDateString("sv-SE", {
+            timeZone: "Asia/Jakarta",
+          }); // sv-SE gives YYYY-MM-DD
+          return eventDate === dateStr;
+        });
+        calendar.innerHTML += `
+                  <div class="calendar-day" onclick="openEventsModal('${dateStr}')">
+                    <strong>${day}</strong>
+                    ${
+                      dayEvents.length > 0
+                        ? `<span class="badge">${dayEvents.length}</span>`
+                        : ""
+                    }
+                  </div>`;
+      }
+    } catch (err) {
+      console.error("Failed to fetch events:", err);
+    }
+  });
+  function openEventsModal(date) {
+    fetch(`/calendar/all`)
+      .then((res) => res.json())
+      .then((events) => {
+        const dayEvents = events.filter(
+          (e) =>
+            new Date(e.start_date).toLocaleDateString("sv-SE", {
+              timeZone: "Asia/Jakarta",
+            }) === date
+        );
+
+        const eventList = document.getElementById("eventList");
+        const viewDate = document.getElementById("viewDate");
+
+        viewDate.textContent = date;
+
+        if (dayEvents.length === 0) {
+          eventList.innerHTML = `<p class="text-muted">No events on this day.</p>`;
+        } else {
+          eventList.innerHTML = dayEvents
+            .map(
+              (e) => `
+          <div class="border-bottom py-2">
+            <span class="event-label label-${e.label}">${e.label}</span>
+            <h6 class="mb-1">${e.title}</h6>
+            <p class="mb-1">${e.description || "No description"}</p>
+            <small>
+              📅 ${new Date(e.start_date).toLocaleDateString("id-ID")} - 
+              ${new Date(e.end_date).toLocaleDateString("id-ID")}
+            </small><br>
+            <small>👤 ${e.guest}</small><br>
+            <small>📍 ${e.location}</small><br>
+            <small>🔗 <a href="${e.event_url}" target="_blank">${
+                e.event_url
+              }</a></small><br>
+            <div class="mt-2 d-flex gap-2">
+              <button class="btn btn-sm btn-warning" onclick="openEditEventModal(${
+                e.id
+              })">
+                <i class="ti ti-pencil"></i> Edit
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="confirmDelete(${
+                e.id
+              })">
+                <i class="ti ti-trash"></i> Delete
+              </button>
+            </div>
+          </div>
+            `
+            )
+            .join("");
+        }
+
+        const viewModal = new bootstrap.Modal(
+          document.getElementById("viewEventsModal")
+        );
+        viewModal.show();
+      });
+  }
+  function openEditEventModal(id) {
+    fetch(`/calendar/all`)
+      .then((res) => res.json())
+      .then((events) => {
+        const event = events.find((e) => e.id == id);
+        if (event) {
+          // Set form action dan isi form
+          document.getElementById(
+            "editEventForm"
+          ).action = `/calendar/update/${id}`;
+          document.getElementById("editEventTitle").value = event.title;
+          document.getElementById("editLabel").value = event.label;
+          document.getElementById("editStartDate").value = event.start_date; // TANPA jam
+          document.getElementById("editEndDate").value = event.end_date; // TANPA jam
+          document.getElementById("editEventUrl").value = event.event_url;
+          document.getElementById("editGuest").value = event.guest;
+          document.getElementById("editLocation").value = event.location;
+          document.getElementById("editDescription").value = event.description;
+
+          // Tutup modal viewEventsModal dulu
+          const viewModalEl = document.getElementById("viewEventsModal");
+          const viewModal = bootstrap.Modal.getInstance(viewModalEl);
+          if (viewModal) {
+            viewModal.hide();
+          }
+
+          // Buka modal edit
+          const editModalEl = document.getElementById("editEventModal");
+          const editModal = new bootstrap.Modal(editModalEl);
+          editModal.show();
+        } else {
+          console.error("Event not found with id:", id);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to fetch event data:", err);
+      });
+  }
+</script>
+<script src="https://cdn.ckeditor.com/4.22.1/standard-all/ckeditor.js"></script>
+<script>
+  // Pasang CKEditor hanya saat modal dibuka
+  document.addEventListener("shown.bs.modal", function (e) {
+    const textarea = e.target.querySelector("textarea");
+    if (textarea) {
+      if (CKEDITOR.instances[textarea.id]) {
+        CKEDITOR.instances[textarea.id].destroy(true);
+      }
+      CKEDITOR.replace(textarea.id);
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctxProfit = document.getElementById('profitLastMonth').getContext('2d');
+  const profitChart = new Chart(ctxProfit, {
+    type: 'line',
+    data: {
+      labels: <%- JSON.stringify(dailyLabels) %>,
+      datasets: [{
+        label: 'Pengunjung',
+        data: <%- JSON.stringify(dailyCounts) %>,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+<script>
+  const ctxExpenses = document.getElementById('expensesChart').getContext('2d');
+  const expensesChart = new Chart(ctxExpenses, {
+    type: 'doughnut',
+    data: {
+      labels: ['Pengunjung', 'Sisa'],
+      datasets: [{
+        data: [<%= totalVisitor %>, <%= 100 - totalVisitor %>],
+        backgroundColor: ['#36A2EB', '#E0E0E0'],
+        hoverOffset: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+        }
+      }
+    }
+  });
+</script>

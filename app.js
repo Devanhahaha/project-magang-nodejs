@@ -29,6 +29,7 @@ const newsUserRoutes = require('./routes/newsuser');
 const settingsUserRoutes = require('./routes/settingsuser');
 const profileUserRoutes = require('./routes/profileuser');
 const calendarRoutes = require('./routes/calendar');
+const clientRoutes = require('./routes/client');
 const mainRoutes = require('./routes/homepage/index');
 
 const sequelize = require('./config/database');
@@ -100,6 +101,7 @@ app.use('/dashboard/settings', authMiddleware);
 app.use('/dashboard-user/settings-user', authMiddleware);
 app.use('/dashboard-user/profile-user', authMiddleware);
 app.use('/calendar', authMiddleware);
+app.use('/client', authMiddleware);
 
 // Routes
 app.use('/', authRoutes);
@@ -117,6 +119,7 @@ app.use('/dashboard/news', newsRoutes);
 app.use('/dashboard-user/news-user', newsUserRoutes);
 app.use('/dashboard/portofolio', portofolioRoutes);
 app.use('/calendar', calendarRoutes);
+app.use('/client', clientRoutes);
 
 // Database Connection & Start Server
 sequelize.authenticate()

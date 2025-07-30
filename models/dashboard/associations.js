@@ -1,6 +1,8 @@
 const User = require('./User');
 const Role = require('./Role');
 const ModelHasRole = require('./ModelHasRole'); // ⬅️ Tambah ini
+const Client = require('./Client');
+const Project = require('./Project');
 
 User.belongsToMany(Role, {
   through: ModelHasRole, // ⬅️ pakai model, bukan string
@@ -18,4 +20,16 @@ Role.belongsToMany(User, {
   constraints: false
 });
 
-module.exports = { User, Role };
+Project.belongsTo(Client, {
+  foreignKey: 'client_id', // sesuaikan nama kolom foreign key
+  as: 'client' // alias untuk relasi ini
+});
+
+// (Opsional) Jika Client punya banyak project
+Client.hasMany(Project, {
+  foreignKey: 'client_id',
+  as: 'projects' // alias untuk relasi ini
+});
+
+
+module.exports = { User, Role, Client, Project };

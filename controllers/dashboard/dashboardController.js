@@ -6,6 +6,8 @@ const Services = require('../../models/dashboard/Services');
 const Calendar = require('../../models/dashboard/Calendar');
 const Visitor = require('../../models/dashboard/Visitor');
 const { Sequelize } = require('sequelize');
+const Client = require('../../models/dashboard/Client');
+const Project = require('../../models/dashboard/Project');
 
 exports.index = async (req, res) => {
   try {
@@ -15,7 +17,8 @@ exports.index = async (req, res) => {
     const totalPortofolio = await Portofolio.count();
     const totalServices = await Services.count();
     const totalVisitor = await Visitor.count();
-
+    const totalClient = await Client.count();
+    
     const visitorDaily = await Visitor.findAll({
       attributes: [
         [Sequelize.fn('DATE', Sequelize.col('visited_at')), 'date'],
@@ -52,6 +55,18 @@ exports.index = async (req, res) => {
     });
 
     const calendars = await Calendar.findAll();
+    const clients = await Client.findAll({
+      include: [{
+        model: Project,
+        as: 'projects',
+      }],
+    });
+    const projects = await Project.findAll({
+      include: [{
+        model: Client,
+        as: 'client',
+      }],
+    });
 
     res.render('dashboard/adminpage/dashboard/dashboard', {
       calendars,
@@ -65,9 +80,12 @@ exports.index = async (req, res) => {
       totalServices,
       persenServices,
       totalVisitor,
+      totalClient,
       dailyLabels,
       dailyCounts,
       growth,
+      clients,
+      projects,
       success: res.locals.success.length ? res.locals.success[0] : null,
       error: res.locals.error.length ? res.locals.error[0] : null
     });

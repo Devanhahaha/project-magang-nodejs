@@ -1,4 +1,5 @@
 const News = require('../../models/dashboard/News');
+const User = require('../../models/dashboard/User');
 const fs = require('fs');
 const path = require('path');
 const validator = require('validator');
@@ -51,6 +52,7 @@ exports.index = async (req, res) => {
     }
 
     const { count, rows } = await News.findAndCountAll({
+      include: [{ model: User, as: 'author' }],
       where: whereClause,
       order: [['id', 'DESC']],
       limit: parseInt(limit),

@@ -77,6 +77,12 @@
               <h5 class="fw-semibold mb-2">
                 <%= newItem.title %>
               </h5>
+              <div class="mb-3">
+                <p class="mb-1 text-muted">Dibuat oleh:</p>
+                <h5 class="fs-6">
+                  <%= newItem.author?.name || 'Admin' %>
+                </h5>
+              </div>              
               <p class="text-muted small" style="max-height: 60px; overflow: hidden;">
                 <%- newItem.description %>
               </p>

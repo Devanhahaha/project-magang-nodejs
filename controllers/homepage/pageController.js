@@ -4,6 +4,8 @@ const About = require('../../models/dashboard/About');
 const Portofolio = require('../../models/dashboard/Portofolio');
 const News = require('../../models/dashboard/News');
 const Visitor = require('../../models/dashboard/Visitor');
+const Client = require('../../models/dashboard/Client');
+const Project = require('../../models/dashboard/Project');
 const sequelize = require('../../config/database'); // sesuaikan path-nya
 const { QueryTypes } = require('sequelize');
 
@@ -38,6 +40,12 @@ exports.home = async (req, res) => {
   try {
     const homes = await Home.findOne({ order: [['createdAt', 'DESC']] });
     const services = await Services.findAll({ order: [['id', 'ASC']] });
+    const clients = await Client.findAll({
+      include: [{
+        model: Project,
+        as: 'projects',
+      }],
+    });
 
     // ✅ Simpan data visitor ke PostgreSQL
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -51,11 +59,12 @@ exports.home = async (req, res) => {
       title: 'Home',
       layout: 'homepage/layouts/main',
       homes,
-      services
+      services,
+      clients
     });
   } catch (err) {
     console.error(err);
-    res.redirect('/home');
+    res.redirect('/');
   }
 };
 

@@ -78,52 +78,16 @@
   </div>
 
   <div class="clients-wrapper">
+    <% clients.forEach(client => { %>
     <div class="client-card yellow" data-aos="zoom-out">
-      <img src="/homepage/images/gemah ripah.png" alt="Klinik Rumah">
+      <img src="/dashboard/storage/files/clients/<%= client.logo %>" alt="Klinik Rumah">
       <div class="client-info">
-        <h3>Klinik Rumah</h3>
-        <p>Disperkim Jabar</p>
+        <% client.projects.forEach(project => { %>
+          <h3><%= project.name %></h3>
+        <% }) %>
+        <p><%= client.name %></p>
       </div>
     </div>
-
-    <div class="client-card blue" data-aos="zoom-out">
-      <img src="/homepage/images/Distrakim.png" alt="Perkimseru">
-      <div class="client-info">
-        <h3>Perkimseru</h3>
-        <p>Distrakim Puwakarta</p>
-      </div>
-    </div>
-
-    <div class="client-card yellow" data-aos="zoom-out">
-      <img src="/homepage/images/PEPB.png" alt="Perkimseru">
-      <div class="client-info">
-        <h3>Factsage Software</h3>
-        <p>PEPB Bandung</p>
-      </div>
-    </div>
-
-    <div class="client-card yellow"data-aos="zoom-out">
-      <img src="/homepage/images/Distrakim.png" alt="Perkimseru">
-      <div class="client-info">
-        <h3>Sisperkim</h3>
-        <p>Distrakim Puwakarta</p>
-      </div>
-    </div>
-
-    <div class="client-card blue" data-aos="zoom-out">
-      <img src="/homepage/images/dpmptsp.png" alt="Perkimseru">
-      <div class="client-info">
-        <h3>Investasi</h3>
-        <p>DPMPTSP</p>
-      </div>
-    </div>
-
-    <div class="client-card yellow"data-aos="zoom-out">
-      <img src="/homepage/images/pt.png" alt="Perkimseru">
-      <div class="client-info">
-        <h3>QR Code Label Produk</h3>
-        <p>PT Mitoku Rubber Indonesia</p>
-      </div>
-    </div>
+    <% }) %>
   </div>
 </section>
