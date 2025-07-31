@@ -30,6 +30,7 @@ const settingsUserRoutes = require('./routes/settingsuser');
 const profileUserRoutes = require('./routes/profileuser');
 const calendarRoutes = require('./routes/calendar');
 const clientRoutes = require('./routes/client');
+const projectRoutes = require('./routes/project');
 const mainRoutes = require('./routes/homepage/index');
 
 const sequelize = require('./config/database');
@@ -95,6 +96,7 @@ app.use('/dashboard/services', authMiddleware);
 app.use('/dashboard/news', authMiddleware);
 app.use('/dashboard-user/news-user', authMiddleware);
 app.use('/dashboard/portfolio', authMiddleware);
+app.use('/dashboard/project', authMiddleware);
 app.use('/dashboard/about', authMiddleware);
 app.use('/dashboard/profile', authMiddleware);
 app.use('/dashboard/settings', authMiddleware);
@@ -118,6 +120,7 @@ app.use('/dashboard/services', servicesRoutes);
 app.use('/dashboard/news', newsRoutes);
 app.use('/dashboard-user/news-user', newsUserRoutes);
 app.use('/dashboard/portofolio', portofolioRoutes);
+app.use('/dashboard/project', projectRoutes);
 app.use('/calendar', calendarRoutes);
 app.use('/client', clientRoutes);
 

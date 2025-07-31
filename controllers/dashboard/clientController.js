@@ -1,4 +1,5 @@
 const Client = require('../../models/dashboard/Client');
+const Project = require('../../models/dashboard/Project');
 const fs = require('fs');
 const path = require('path');
 
@@ -20,6 +21,39 @@ exports.store = async (req, res) => {
     res.redirect('/dashboard');
   }
 };
+
+exports.showByName = async (req, res) => {
+  try {
+    const { name } = req.params;
+    
+    const clients = await Client.findOne({ 
+      where: { name },
+      include: [{
+        model: Project,
+        as: 'projects',
+      }],
+     });
+
+    if (!clients) throw new Error('Client not found');
+
+    const projects = await Project.findAll({
+      include: [{
+        model: Client,
+        as: 'client',
+      }],
+    });
+
+    res.render('dashboard/adminpage/dashboard/detail-client', {
+      layout: 'dashboard/layouts/main',
+      title: 'Detail Client',
+      clients,
+      projects,
+    });
+  } catch (err) {
+    req.flash('error', 'Failed to load client details: ' + err.message);
+    res.redirect('/dashboard');
+  }
+};  
 
 exports.update = async (req, res) => {
   try {

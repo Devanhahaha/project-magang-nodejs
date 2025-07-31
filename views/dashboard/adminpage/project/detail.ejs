@@ -1,0 +1,64 @@
+<% var title="Detail Project" ; %>
+
+<div class="page-content">
+  <div class="container text-center mt-4">
+    <% if (project.logo_project) { %>
+      <img src="/dashboard/storage/files/project/<%= project.logo_project %>" class="img-fluid rounded shadow mb-4" style="max-height: 300px;" alt="<%= project.name %>">
+    <% } else { %>
+      <p class="text-muted">Foto tidak tersedia.</p>
+    <% } %>
+  </div>
+
+  <div class="content-body pt-3">
+    <div class="container">
+      <div class="card shadow p-4 mb-4">
+        <h4 class="mb-2 text-center"><%= project.client?.name || '-' %></h4>
+        <p class="text-center text-warning"><%= project.name %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Title</h6>
+        <p class="mb-0 text-dark"><%= project.title %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Description</h6>
+        <p class="mb-0 text-dark"><%- project.desc %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Status</h6>
+        <p class="mb-0 text-dark"><%= project.status %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Category</h6>
+        <p class="mb-0 text-dark"><%= project.category %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Type</h6>
+        <p class="mb-0 text-dark"><%= project.type %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Developer</h6>
+        <p class="mb-0 text-dark"><%= project.developer?.name || '-' %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Quality Assurance</h6>
+        <p class="mb-0 text-dark"><%= project.qa?.name || '-' %></p>
+      </div>
+
+      <div class="card shadow p-3 mb-3">
+        <h6 class="mb-1 text-muted text-center">Document</h6>
+        <p class="mb-0 text-dark"><%= project.document?.name || '-' %></p>
+      </div>
+
+      <div class="text-center mb-3">
+        <a href="/dashboard/project" class="btn btn-secondary me-2">← Kembali</a>
+      </div>
+    </div>
+  </div>
+</div>

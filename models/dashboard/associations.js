@@ -20,6 +20,12 @@ Role.belongsToMany(User, {
   constraints: false
 });
 
+// Relasi User (multi peran) di Project
+Project.belongsTo(User, { foreignKey: 'user_id', as: 'admin' });
+Project.belongsTo(User, { foreignKey: 'developer_id', as: 'developer' });
+Project.belongsTo(User, { foreignKey: 'qa_id', as: 'qa' });
+Project.belongsTo(User, { foreignKey: 'document_id', as: 'document' });
+
 Project.belongsTo(Client, {
   foreignKey: 'client_id', // sesuaikan nama kolom foreign key
   as: 'client' // alias untuk relasi ini

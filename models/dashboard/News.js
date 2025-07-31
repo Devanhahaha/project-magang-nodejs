@@ -22,6 +22,10 @@ const News = sequelize.define('News', {
     type: DataTypes.DATE,
     field: 'updated_at', // ✅ mapping kolom
   },
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },  
 }, {
   tableName: 'news',
   timestamps: true, // aktifkan kalau ada `created_at`, `updated_at`

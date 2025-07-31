@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const clientController = require('../controllers/dashboard/clientController');
+const projectController = require('../controllers/dashboard/projectController');
 const multer = require('multer');
 const path = require('path');
 
 const upload = multer({
   storage: multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'public/dashboard/storage/files/clients'),
+    destination: (req, file, cb) => cb(null, 'public/dashboard/storage/files/project'),
     filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
   }),
   limits: { fileSize: 2 * 1024 * 1024 }, // max 2MB
@@ -18,30 +18,32 @@ const upload = multer({
   }
 });
 
+router.get('/', projectController.index);
+
 // Route
 router.post('/update/:id', (req, res, next) => {
-  upload.single('logo')(req, res, (err) => {
+  upload.single('logo_project')(req, res, (err) => {
     if (err) {
       req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
       req.flash('old', req.body);
-      return res.redirect('/dashboard');
+      return res.redirect('/dashboard/project');
     }
     next();
   });
-}, clientController.update);
+}, projectController.update);
 
 router.post('/store', (req, res, next) => {
-  upload.single('logo')(req, res, (err) => {
+  upload.single('logo_project')(req, res, (err) => {
     if (err) {
       req.flash('error', err.message || 'Upload failed, Only image files are allowed!');
       req.flash('old', req.body);
-      return res.redirect('/dashboard');
+      return res.redirect('/dashboard/project');
     }
     next();
   });
-}, clientController.store);
+}, projectController.store);
 
-router.post('/delete/:id', clientController.destroy);
-router.get('/detail/:name', clientController.showByName);
+router.post('/delete/:id', projectController.destroy);
+router.get('/detail/:name', projectController.showByName);
 
 module.exports = router;

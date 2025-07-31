@@ -131,7 +131,6 @@
         <div class="col-xl-6 col-md-6">
           <div class="card h-100">
             <div class="card-header pb-0">
-              <h5 class="card-title mb-1">Profit</h5>
               <p class="card-subtitle">Jumlah Pengunjung</p>
             </div>
             <div class="card-body">
@@ -148,7 +147,6 @@
           <div class="card h-100">
             <div class="card-header pb-2">
               <h5 class="card-title mb-1"><%= totalVisitor %> Pengunjung</h5>
-              <p class="card-subtitle">Expenses Jumlah Pengunjung</p>
             </div>
             <div class="card-body">
               <canvas id="expensesChart"></canvas>
@@ -198,7 +196,7 @@
             <% clients.forEach(function(client){ %>
             <li class="d-flex mb-6">
               <div class="me-4">
-                <img src="/dashboard/storage/files/clients/<%= client.logo %>" alt="User" class="rounded" width="46" />
+                <a href="/client/detail/<%= client.name %>"><img src="/dashboard/storage/files/clients/<%= client.logo %>" alt="User" class="rounded" width="46" /></a>
               </div>
               <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                 <div class="me-2">
