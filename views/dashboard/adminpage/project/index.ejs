@@ -210,7 +210,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Start Date</label>
-            <input type="date" name="start_end" class="form-control" required />
+            <input type="date" name="start_date" class="form-control" required />
           </div>
           <div class="mb-3">
             <label class="form-label">End Date</label>
@@ -245,6 +245,15 @@
               <th>Title</th>
               <th>Description</th>
               <th>Status</th>
+              <th>Bidang</th>
+              <th>Lokasi</th>
+              <th>Nama Pemberi Jasa</th>
+              <th>Alamat Pemberi Jasa</th>
+              <th>Nomor Kontrak</th>
+              <th>Nilai Kontrak</th>
+              <th>Tanggal Kontrak</th>
+              <th>Tanggal Selesai Kontrak</th>
+              <th>Ba Serah Terima</th>
               <th>Category</th>
               <th>Type</th>
               <th>Developer</th>
@@ -300,6 +309,15 @@
                 </div>
               </div>
               <td><%= project.status %></td>
+              <td><%= project.bidang %></td>
+              <td><%= project.lokasi %></td>
+              <td><%= project.nama_pemberi_jasa %></td>
+              <td><%= project.alamat_pemberi_jasa %></td>
+              <td><%= project.nomor_kontrak %></td>
+              <td>Rp <%= project.nilai_kontrak ? Number(project.nilai_kontrak).toLocaleString('id-ID') : '0' %></td>
+              <td><%= project.start_date %></td>
+              <td><%= project.end_date %></td>
+              <td><%= project.ba_serah_terima %></td>
               <td><%= project.category %></td>
               <td><%= project.type %></td>
               <td><%= project.developer?.name || '-' %></td>
@@ -574,7 +592,7 @@
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Start Date</label>
-                        <input type="date" name="start_end" class="form-control" required />
+                        <input type="date" name="start_date" class="form-control" required />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">End Date</label>

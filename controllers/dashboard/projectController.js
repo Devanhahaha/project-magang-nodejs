@@ -24,12 +24,22 @@ exports.index = async (req, res) => {
       });
 
       const projectWithPreview = projects.map((item) => {
+        const formatTanggal = (tgl) =>
+          tgl ? new Date(tgl).toLocaleDateString('id-ID', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+          }) : '-';
         return {
           ...item.toJSON(), // Convert Sequelize instance ke plain object
           descPreview: stripHTML(item.desc),
+          ...item.dataValues,
+          start_date: formatTanggal(item.start_date),
+          end_date: formatTanggal(item.end_date),
+          ba_serah_terima: formatTanggal(item.ba_serah_terima),
         };
       });
-  
+      
       const clients = await Client.findAll();
   
       // ✅ Ambil user berdasarkan role dari relasi Role
@@ -166,7 +176,16 @@ exports.store = async (req, res) => {
       client_id,
       developer_id,
       qa_id,
-      document_id
+      document_id,
+      bidang,
+      lokasi,
+      nama_pemberi_jasa,
+      alamat_pemberi_jasa,
+      nomor_kontrak,
+      nilai_kontrak,
+      start_date,
+      end_date,
+      ba_serah_terima
     } = req.body;
 
     const logo = req.file ? req.file.filename : null;
@@ -183,7 +202,16 @@ exports.store = async (req, res) => {
       client_id,
       developer_id,
       qa_id,
-      document_id
+      document_id,
+      bidang,
+      lokasi,
+      nama_pemberi_jasa,
+      alamat_pemberi_jasa,
+      nomor_kontrak,
+      nilai_kontrak,
+      start_date,
+      end_date,
+      ba_serah_terima
     });
 
     req.flash('success', 'Project created successfully.');
@@ -216,7 +244,16 @@ exports.update = async (req, res) => {
       client_id,
       developer_id,
       qa_id,
-      document_id
+      document_id,
+      bidang,
+      lokasi,
+      nama_pemberi_jasa,
+      alamat_pemberi_jasa,
+      nomor_kontrak,
+      nilai_kontrak,
+      start_date,
+      end_date,
+      ba_serah_terima
     } = req.body;
 
     // Hapus file lama jika ada file baru
@@ -238,7 +275,16 @@ exports.update = async (req, res) => {
       client_id,
       developer_id,
       qa_id,
-      document_id
+      document_id,
+      bidang,
+      lokasi,
+      nama_pemberi_jasa,
+      alamat_pemberi_jasa,
+      nomor_kontrak,
+      nilai_kontrak,
+      start_date,
+      end_date,
+      ba_serah_terima
     });
 
     req.flash('success', 'Project updated successfully');
