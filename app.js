@@ -34,6 +34,12 @@ const clientRoutes = require('./routes/client');
 const projectRoutes = require('./routes/project');
 const mainRoutes = require('./routes/homepage/index');
 
+// developer
+const dashboardDeveloperRoutes = require('./routes/developer/dashboarddev');
+const profileDeveloperRoutes = require('./routes/developer/profiledev');
+const projectDeveloperRoutes = require('./routes/developer/projectdev');
+const settingDeveloperRoutes = require('./routes/developer/settingdev');
+
 const sequelize = require('./config/database');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
@@ -107,6 +113,11 @@ app.use('/dashboard-user/profile-user', authMiddleware);
 app.use('/calendar', authMiddleware);
 app.use('/client', authMiddleware);
 
+// developer
+app.use('/dashboard-developer/profile-developer', authMiddleware);
+app.use('/dashboard-developer/project-developer', authMiddleware);
+app.use('/dashboard-developer/setting-developer', authMiddleware);
+
 // Routes
 app.use('/', authRoutes);
 app.use('/', resetpasswordRoutes);
@@ -126,6 +137,12 @@ app.use('/dashboard/portofolioprivate', portofolioprivateRoutes);
 app.use('/dashboard/project', projectRoutes);
 app.use('/calendar', calendarRoutes);
 app.use('/client', clientRoutes);
+
+// developer
+app.use('/dashboard-developer', dashboardDeveloperRoutes);
+app.use('/dashboard-developer/project-developer', projectDeveloperRoutes);
+app.use('/dashboard-developer/profile-developer', profileDeveloperRoutes);
+app.use('/dashboard-developer/setting-developer', settingDeveloperRoutes);
 
 // Database Connection & Start Server
 sequelize.authenticate()

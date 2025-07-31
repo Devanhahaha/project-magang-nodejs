@@ -3,14 +3,22 @@ exports.isAdmin = (req, res, next) => {
       return next();
     }
     req.flash('error', 'You are not authorized as admin.');
-    return res.redirect('/dashboard-user');
+    return res.redirect('/dashboard');
   };
   
-  exports.isUser = (req, res, next) => {
+exports.isUser = (req, res, next) => {
     if (req.session.user && req.session.user.role === 'user') {
       return next();
     }
     req.flash('error', 'You are not authorized as user.');
-    return res.redirect('/dashboard');
-  };
+    return res.redirect('/dashboard-user');
+};
+
+exports.isDeveloper = (req, res, next) => {
+    if (req.session.user && req.session.user.role === 'developer') {
+      return next();
+    }
+    req.flash('error', 'You are not authorized as user.');
+    return res.redirect('/dashboard-developer');
+};
   

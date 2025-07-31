@@ -1,0 +1,96 @@
+<% var title = 'Settings Developer'; %>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="nav-align-top">
+        <ul class="nav nav-pills flex-column flex-md-row mb-6 gap-2 gap-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="javascript:void(0);"><i class="ti-sm ti ti-users me-1_5"></i> Account</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card mb-6">
+        <div class="card-body pt-4">
+          <form id="formAccountSettings" action="/dashboard-developer/setting-developer/update/<%= user.id %>" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <div class="mb-4 col-md-6">
+                <label class="form-label">Name</label>
+                <input class="form-control" type="text" name="name" value="<%= old?.name || user.name %>" autofocus />
+              </div>
+              <div class="mb-4 col-md-6">
+                <label class="form-label">E-mail</label>
+                <input class="form-control" type="text" name="email" value="<%= old?.email || user.email %>" />
+              </div>
+              <div class="mb-4 col-md-6">
+                <label class="form-label">Contact</label>
+                <input class="form-control" type="text" name="contact" value="<%= old?.contact || user.contact %>" />
+              </div>
+              <div class="mb-4 col-md-6">
+                <label class="form-label">Current Password</label>
+                <input class="form-control" type="password" name="current_password" />
+              </div>
+              <div class="mb-4 col-md-6">
+                <label class="form-label">New Password</label>
+                <input class="form-control" type="password" name="new_password" />
+              </div>
+              <div class="mb-4 col-md-6">
+                <label class="form-label">Confirm Password</label>
+                <input class="form-control" type="password" name="confirm_password" />
+              </div>
+            </div>
+            <div class="mt-2">
+              <button type="submit" class="btn btn-primary me-3">Save changes</button>
+              <button type="reset" class="btn btn-label-secondary">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/admin/assets/js/pages-account-settings-account.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<% if (success && success.length> 0) { %>
+  <script>
+      Swal.fire({
+          icon: 'success',
+          title: 'Berhasil!',
+          text: '<%= success[0] %>', 
+          showConfirmButton: false,
+          timer: 15000
+      });
+  </script>
+  <% } %>
+
+  <% if (error && error.length> 0) { %>
+      <script>
+          Swal.fire({
+              icon: 'error',
+              title: 'Gagal!',
+              text: '<%= error[0] %>', 
+              showConfirmButton: false,
+              timer: 15000
+          });
+      </script>
+      <% } %>
+
+          <% if (errors && errors.length> 0 && old && old.id) { %>
+              <script>
+                  document.addEventListener("DOMContentLoaded", function () {
+                      const offcanvasEl = document.getElementById("editHome<%= old.id %>");
+                      if (offcanvasEl) {
+                          const offcanvas = new bootstrap.Offcanvas(offcanvasEl);
+                          offcanvas.show();
+                      }
+
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Validasi Gagal!',
+                          html: `<%= errors.join('<br>') %>`,
+                          confirmButtonText: 'OK'
+                      });
+                  });
+              </script>
+              <% } %>

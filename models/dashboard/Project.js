@@ -29,6 +29,11 @@ const Project = sequelize.define('Project', {
   start_date: DataTypes.DATE,
   end_date: DataTypes.DATE,
   ba_serah_terima: DataTypes.DATE,
+  progress: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },  
   createdAt: {
     type: DataTypes.DATE,
     field: 'created_at',
