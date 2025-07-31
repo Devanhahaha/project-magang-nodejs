@@ -184,6 +184,42 @@
               <% }) %>
             </select>
           </div>
+          <div class="mb-3">
+            <label class="form-label">Bidang</label>
+            <input type="text" name="bidang" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Lokasi</label>
+            <input type="text" name="lokasi" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nama Pemberi Jasa</label>
+            <input type="text" name="nama_pemberi_jasa" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Alamat Pemberi Jasa</label>
+            <input type="text" name="alamat_pemberi_jasa" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nomor Kontrak</label>
+            <input type="text" name="nomor_kontrak" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nilai Kontrak</label>
+            <input type="text" name="nilai_kontrak" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Start Date</label>
+            <input type="date" name="start_end" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">End Date</label>
+            <input type="date" name="end_date" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ba Serah Terima</label>
+            <input type="date" name="ba_serah_terima" class="form-control" required />
+          </div>
           <div class="mt-4">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
             <button
@@ -512,7 +548,42 @@
                           <% }) %>
                         </select>
                       </div>
-
+                      <div class="mb-3">
+                        <label class="form-label">Bidang</label>
+                        <input type="text" name="bidang" value="<%= project.bidang %>" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Lokasi</label>
+                        <input type="text" name="lokasi" value="<%= project.lokasi %>" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Nama Pemberi Jasa</label>
+                        <input type="text" name="nama_pemberi_jasa" value="<%= project.nama_pemberi_jasa %>" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Alamat Pemberi Jasa</label>
+                        <input type="text" name="alamat_pemberi_jasa" value="<%= project.alamat_pemberi_jasa %>" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Nomor Kontrak</label>
+                        <input type="text" name="nomor_kontrak" value="<%= project.nomor_kontrak %>" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Nilai Kontrak</label>
+                        <input type="text" name="nilai_kontrak" value="<%= project.nilai_kontrak %>" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <input type="date" name="start_end" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">End Date</label>
+                        <input type="date" name="end_date" class="form-control" required />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Ba Serah Terima</label>
+                        <input type="date" name="ba_serah_terima" class="form-control" required />
+                      </div>
                       <div class="mt-4">
                         <button type="submit" class="btn btn-primary me-2">
                           Submit
