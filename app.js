@@ -40,6 +40,12 @@ const profileDeveloperRoutes = require('./routes/developer/profiledev');
 const projectDeveloperRoutes = require('./routes/developer/projectdev');
 const settingDeveloperRoutes = require('./routes/developer/settingdev');
 
+// qa
+const dashboardQaRoutes = require('./routes/qualityassurance/dashboardqa');
+const profileQaRoutes = require('./routes/qualityassurance/profileqa');
+const projectQaRoutes = require('./routes/qualityassurance/projectqa');
+const settingQaRoutes = require('./routes/qualityassurance/settingqa');
+
 const sequelize = require('./config/database');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
@@ -118,6 +124,11 @@ app.use('/dashboard-developer/profile-developer', authMiddleware);
 app.use('/dashboard-developer/project-developer', authMiddleware);
 app.use('/dashboard-developer/setting-developer', authMiddleware);
 
+// qa
+app.use('/dashboard-qa/profile-qa', authMiddleware);
+app.use('/dashboard-qa/project-qa', authMiddleware);
+app.use('/dashboard-qa/setting-qa', authMiddleware);
+
 // Routes
 app.use('/', authRoutes);
 app.use('/', resetpasswordRoutes);
@@ -143,6 +154,12 @@ app.use('/dashboard-developer', dashboardDeveloperRoutes);
 app.use('/dashboard-developer/project-developer', projectDeveloperRoutes);
 app.use('/dashboard-developer/profile-developer', profileDeveloperRoutes);
 app.use('/dashboard-developer/setting-developer', settingDeveloperRoutes);
+
+// qa
+app.use('/dashboard-qa', dashboardQaRoutes);
+app.use('/dashboard-qa/project-qa', projectQaRoutes);
+app.use('/dashboard-qa/profile-qa', profileQaRoutes);
+app.use('/dashboard-qa/setting-qa', settingQaRoutes);
 
 // Database Connection & Start Server
 sequelize.authenticate()

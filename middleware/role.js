@@ -21,4 +21,12 @@ exports.isDeveloper = (req, res, next) => {
     req.flash('error', 'You are not authorized as user.');
     return res.redirect('/dashboard-developer');
 };
+
+exports.isQa = (req, res, next) => {
+    if (req.session.user && req.session.user.role === 'quality assurance') {
+      return next();
+    }
+    req.flash('error', 'You are not authorized as user.');
+    return res.redirect('/dashboard-qa');
+};
   

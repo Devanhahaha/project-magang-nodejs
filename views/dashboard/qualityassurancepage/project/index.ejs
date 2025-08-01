@@ -1,0 +1,215 @@
+<% var title="Projects Quality Assurance" ; %>
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="card shadow mb-4">
+    <div
+      class="card-header py-3 d-flex justify-content-between align-items-center"
+    >
+      <h6 class="m-0 font-weight-bold text-primary">DataTables Project</h6>
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%">
+          <thead>
+            <tr class="text-nowrap">
+              <th>No</th>
+              <th>Logo Project</th>
+              <th>Client</th>
+              <th>Name Project</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Bidang</th>
+              <th>Lokasi</th>
+              <th>Nama Pemberi Jasa</th>
+              <th>Alamat Pemberi Jasa</th>
+              <th>Nomor Kontrak</th>
+              <th>Nilai Kontrak</th>
+              <th>Tanggal Kontrak</th>
+              <th>Tanggal Selesai Kontrak</th>
+              <th>Ba Serah Terima</th>
+              <th>Category</th>
+              <th>Type</th>
+              <th>Developer</th>
+              <th>Quality Assurance</th>
+              <th>Document</th>
+              <th>Progress</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% projects.forEach((project, index) => { %>
+            <tr class="text-nowrap">
+              <td><%= index + 1 %></td>
+              <td>
+                <a
+                  href="/dashboard/project/detail/<%= encodeURIComponent(project.name) %>"
+                  ><img
+                    src="/dashboard/storage/files/project/<%= project.logo_project %>"
+                    height="50"
+                    style="object-fit: cover"
+                /></a>
+              </td>
+              <td><%= project.client.name %></td>
+              <td><%= project.name %></td>
+              <td><%= project.title %></td>
+              <td
+                data-bs-toggle="modal"
+                data-bs-target="#descModal<%= project.id %>"
+                style="cursor: pointer"
+              >
+                <%= project.descPreview.length > 10 ?
+                project.descPreview.substring(0, 10) + '...' :
+                project.descPreview %>
+              </td>
+              <!-- Modal Description -->
+              <div
+                class="modal fade"
+                id="descModal<%= project.id %>"
+                tabindex="-1"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Full Description</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                      ></button>
+                    </div>
+                    <div class="modal-body"><%- project.desc %></div>
+                  </div>
+                </div>
+              </div>
+              <td><%= project.status %></td>
+              <td><%= project.bidang %></td>
+              <td><%= project.lokasi %></td>
+              <td><%= project.nama_pemberi_jasa %></td>
+              <td><%= project.alamat_pemberi_jasa %></td>
+              <td><%= project.nomor_kontrak %></td>
+              <td>Rp <%= project.nilai_kontrak ? Number(project.nilai_kontrak).toLocaleString('id-ID') : '0' %></td>
+              <td><%= project.start_date %></td>
+              <td><%= project.end_date %></td>
+              <td><%= project.ba_serah_terima %></td>
+              <td><%= project.category %></td>
+              <td><%= project.type %></td>
+              <td><%= project.developer?.name || '-' %></td>
+              <td><%= project.qa?.name || '-' %></td>
+              <td><%= project.document?.name || '-' %></td>
+              <td>
+                <div class="progress" style="height: 16px">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: <%= project.progress %>%"
+                    aria-valuenow="<%= project.progress %>"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <%= project.progress %>%
+                  </div>
+                </div>
+              </td>              
+              <td>
+                <button
+                  class="btn btn-warning btn-sm"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#add-new-record-update-<%= project.id %>"
+                >
+                  <i class="ti ti-pencil"></i>
+                </button>
+                <div class="offcanvas offcanvas-custom offcanvas-end" tabindex="-1" id="add-new-record-update-<%= project.id %>">
+                    <div class="offcanvas-header border-bottom">
+                      <h5 class="offcanvas-title">Update Project</h5>
+                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body flex-grow-1">
+                        <form action="/dashboard-developer/project-developer/update/<%= project.id %>" method="post">
+                        <div class="mb-3">
+                          <label for="status" class="form-label">Status</label>
+                          <select class="form-select" name="status" required>
+                            <option value="on_progress" <%= project.status === 'on_progress' ? 'selected' : '' %>>Akan Dikerjakan</option>
+                            <option value="progress" <%= project.status === 'progress' ? 'selected' : '' %>>Sedang Dikerjakan</option>
+                            <option value="completed" <%= project.status === 'completed' ? 'selected' : '' %>>Selesai</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="progress" class="form-label">Progress (%)</label>
+                          <input type="number" class="form-control" name="progress" min="0" max="100" value="<%= project.progress %>" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      </form>
+                    </div>
+                  </div>                  
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  function confirmDelete(id) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const form = document.getElementById(`delete-form-${id}`);
+        if (form) {
+          form.submit();
+        }
+      }
+    });
+  }
+</script>
+
+<% if (success && success.length> 0) { %>
+<script>
+  Swal.fire({
+    icon: "success",
+    title: "Berhasil!",
+    text: "<%= success[0] %>",
+    showConfirmButton: false,
+    timer: 15000,
+  });
+</script>
+<% } %> <% if (error && error.length> 0) { %>
+<script>
+  Swal.fire({
+    icon: "error",
+    title: "Gagal!",
+    text: "<%= error[0] %>",
+    showConfirmButton: false,
+    timer: 15000,
+  });
+</script>
+<% } %> <% if (errors && errors.length> 0 && old && old.id) { %>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const offcanvasEl = document.getElementById("editHome<%= old.id %>");
+    if (offcanvasEl) {
+      const offcanvas = new bootstrap.Offcanvas(offcanvasEl);
+      offcanvas.show();
+    }
+
+    Swal.fire({
+      icon: "error",
+      title: "Validasi Gagal!",
+      html: `<%= errors.join('<br>') %>`,
+      confirmButtonText: "OK",
+    });
+  });
+</script>
+<% } %>

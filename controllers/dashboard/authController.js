@@ -98,6 +98,8 @@ exports.authenticate = async (req, res) => {
     return res.redirect('/dashboard-user');
   } else if (roleName === 'developer') {
     return res.redirect('/dashboard-developer');
+  } else if (roleName === 'quality assurance') {
+    return res.redirect('/dashboard-qa');
   } else {
     req.flash('error', 'Role tidak dikenali.');
     return res.redirect('/login');

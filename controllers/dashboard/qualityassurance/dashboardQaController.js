@@ -7,9 +7,9 @@ exports.index = async (req, res) => {
     const user = await User.findByPk(req.session.user.id);
     
     const totalProject = await Project.count({
-      where: {
-        developer_id: user.id
-      }
+        where: {
+            qa_id: user.id
+        }
     });
 
     const target = 50;
@@ -23,9 +23,9 @@ exports.index = async (req, res) => {
       year: 'numeric'
     });
 
-    res.render('dashboard/developerpage/dashboard/index', {
-      title: 'Dashboard Developer',
-      layout: 'dashboard/developerpage/layouts/main',
+    res.render('dashboard/qualityassurancepage/dashboard/index', {
+      title: 'Dashboard Quality Assurance',
+      layout: 'dashboard/qualityassurancepage/layouts/main',
       user,
       currentDate,
       totalProject,

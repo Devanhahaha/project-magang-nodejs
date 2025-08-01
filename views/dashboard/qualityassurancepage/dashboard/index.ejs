@@ -1,4 +1,4 @@
-<% var title="Dashboard Developer" ; %>
+<% var title="Dashboard Quality Assurance" ; %>
     <div class="content-wrapper">
         <div class="container-fluid flex-grow-1 container-p-y">
             <div class="row g-6">
@@ -46,7 +46,7 @@
                                 <p class="mb-2">
                                     It's <%= currentDate %> — let's make it count!
                                 </p>
-                                <a href="/dashboard-developer/project-developer" class="btn btn-primary">Check Activities</a>
+                                <a href="/dashboard-qa/project-qa" class="btn btn-primary">Check Activities</a>
                             </div>
                         </div>
                         <div class="col-5 text-center text-sm-left">
@@ -95,28 +95,28 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <% if (error) { %>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal!',
-                text: '<%= error %>',
-                showConfirmButton: false,
-                timer: 2000
-            });
-        </script>
-        <% } %>
+<% if (error) { %>
+<script>
+    Swal.fire({
+    icon: 'error',
+    title: 'Gagal!',
+    text: '<%= error %>',
+    showConfirmButton: false,
+    timer: 2000
+});
+</script>
+<% } %>
 
-            <% if (success) { %>
-                <script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: '<%= success %>',
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                </script>
-                <% } %>
+<% if (success) { %>
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Berhasil!',
+    text: '<%= success %>',
+    showConfirmButton: false,
+    timer: 2000
+});
+</script>
+<% } %>

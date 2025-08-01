@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const settingsDeveloperController = require('../../controllers/dashboard/developer/settingsDeveloperController');
+const settingQaController = require('../../controllers/dashboard/qualityassurance/settingQaController');
 const authMiddleware = require('../../middleware/auth');
 const multer = require('multer');
 const path = require('path');
@@ -19,7 +19,7 @@ const upload = multer({
     }
   });
 
-router.get('/', authMiddleware, settingsDeveloperController.index);
+router.get('/', authMiddleware, settingQaController.index);
 
 router.post('/update/:id', (req, res, next) => {
     upload.single('logo_apk')(req, res, (err) => {
@@ -30,6 +30,6 @@ router.post('/update/:id', (req, res, next) => {
       }
       next();
     });
-  }, authMiddleware, settingsDeveloperController.update);
+  }, authMiddleware, settingQaController.update);
 
 module.exports = router;
