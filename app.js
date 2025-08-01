@@ -46,6 +46,12 @@ const profileQaRoutes = require('./routes/qualityassurance/profileqa');
 const projectQaRoutes = require('./routes/qualityassurance/projectqa');
 const settingQaRoutes = require('./routes/qualityassurance/settingqa');
 
+// document
+const dashboardDocRoutes = require('./routes/document/dashboarddoc');
+const profileDocRoutes = require('./routes/document/profiledoc');
+const projectDocRoutes = require('./routes/document/projectdoc');
+const settingDocRoutes = require('./routes/document/settingdoc');
+
 const sequelize = require('./config/database');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
@@ -129,6 +135,11 @@ app.use('/dashboard-qa/profile-qa', authMiddleware);
 app.use('/dashboard-qa/project-qa', authMiddleware);
 app.use('/dashboard-qa/setting-qa', authMiddleware);
 
+// document
+app.use('/dashboard-document/profile-document', authMiddleware);
+app.use('/dashboard-document/project-document', authMiddleware);
+app.use('/dashboard-document/setting-document', authMiddleware);
+
 // Routes
 app.use('/', authRoutes);
 app.use('/', resetpasswordRoutes);
@@ -160,6 +171,12 @@ app.use('/dashboard-qa', dashboardQaRoutes);
 app.use('/dashboard-qa/project-qa', projectQaRoutes);
 app.use('/dashboard-qa/profile-qa', profileQaRoutes);
 app.use('/dashboard-qa/setting-qa', settingQaRoutes);
+
+// document
+app.use('/dashboard-document', dashboardDocRoutes);
+app.use('/dashboard-document/project-document', projectDocRoutes);
+app.use('/dashboard-document/profile-document', profileDocRoutes);
+app.use('/dashboard-document/setting-document', settingDocRoutes);
 
 // Database Connection & Start Server
 sequelize.authenticate()

@@ -1,19 +1,19 @@
 // controllers/dashboardController.js
 const User = require('../../../models/dashboard/User');
-const News = require('../../../models/dashboard/News');
+const Project = require('../../../models/dashboard/Project');
 
 exports.index = async (req, res) => {
   try {
     const user = await User.findByPk(req.session.user.id);
     
-    const totalNews = await News.count({
-      where: {
-        user_id: user.id
-      }
+    const totalProject = await Project.count({
+        where: {
+            document_id: user.id
+        }
     });
 
     const target = 50;
-    const persenNews = Math.min((totalNews / target) * 100, 100);
+    const persenProject = Math.min((totalProject / target) * 100, 100);
 
     const date = new Date();
     const currentDate = date.toLocaleDateString('en-US', {
@@ -23,13 +23,13 @@ exports.index = async (req, res) => {
       year: 'numeric'
     });
 
-    res.render('dashboard/userpage/dashboard/index', {
-      title: 'Dashboard User',
-      layout: 'dashboard/userpage/layouts/main',
+    res.render('dashboard/documentpage/dashboard/index', {
+      title: 'Dashboard Document',
+      layout: 'dashboard/documentpage/layouts/main',
       user,
       currentDate,
-      totalNews,
-      persenNews,
+      totalProject,
+      persenProject,
       success: res.locals.success.length ? res.locals.success[0] : null,
       error: res.locals.error.length ? res.locals.error[0] : null
     });

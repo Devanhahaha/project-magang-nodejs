@@ -1,4 +1,4 @@
-<% var title="Projects Quality Assurance" ; %>
+<% var title="Projects Document" ; %>
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card shadow mb-4">
     <div
@@ -43,7 +43,7 @@
               <td><%= index + 1 %></td>
               <td>
                 <a
-                  href="/dashboard-qa/project-qa/detail/<%= encodeURIComponent(project.name) %>"
+                  href="/dashboard-document/project-document/detail/<%= encodeURIComponent(project.name) %>"
                   ><img
                     src="/dashboard/storage/files/project/<%= project.logo_project %>"
                     height="50"
@@ -125,7 +125,7 @@
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <div class="offcanvas-body flex-grow-1">
-                        <form action="/dashboard-qa/project-qa/update/<%= project.id %>" method="post">
+                        <form action="/dashboard-document/project-document/update/<%= project.id %>" method="post">
                         <div class="mb-3">
                           <label for="status" class="form-label">Status</label>
                           <select class="form-select" name="status" required>
